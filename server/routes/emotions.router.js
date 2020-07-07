@@ -18,6 +18,7 @@ router.post("/log", rejectUnauthenticated, (req, res) => {
     user.id,
     log.primary_emotion,
     log.intensity_emotion,
+    Number(log.intensity_level),
     log.how_feel,
     log.why_feel,
   ];

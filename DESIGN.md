@@ -18,3 +18,5 @@
     - 
   - What might the sagas look like:
     - 
+  - I will need to make a home page
+  - 

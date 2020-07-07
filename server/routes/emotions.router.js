@@ -11,8 +11,8 @@ router.post("/log", rejectUnauthenticated, (req, res) => {
   }
   const log = req.body;
   const user = req.user; // user authenticated
-  console.log(user);
-  console.log(log);
+  console.log(user); // logs user
+  console.log(log); // logs the log (meta...)
   const queryText = `INSERT INTO "emotion_logged" ("user_id", "primary_emotion", "intensity_emotion", "intensity_level", "how_feel", "why_feel") VALUES ($1, $2, $3, $4, $5, $6);`;
   const queryValues = [
     user.id,

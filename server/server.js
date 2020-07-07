@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
 // Passport
 const passport = require('./strategies/user.strategy');
-// Route includes
+// ----- Route includes -----
 const userRouter = require('./routes/user.router');
 const emotionsRouter = require("./routes/emotions.router");
 

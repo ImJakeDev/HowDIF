@@ -10,8 +10,8 @@ import {
 // Redux
 import { connect } from "react-redux";
 // Components
-import Nav from "../Nav/Nav";
-import Footer from "../Footer/Footer";
+import Nav from "../Layout/Nav/Nav";
+import Footer from "../Layout/Footer/Footer";
 // Protected Components
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 // Component Pages

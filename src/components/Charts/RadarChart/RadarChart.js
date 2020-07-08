@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ResponsiveRadar } from "@nivo/radar";
+import "./RadarChart.css";
 
 // Went alright
 
@@ -42,6 +43,7 @@ function RadarChart() {
   return (
     <>
       <div className="boxSize">
+        <h1>Emotional Radar</h1>
         <ResponsiveRadar
           data={data}
           keys={["user"]}

@@ -15,10 +15,10 @@ import Footer from "../Footer/Footer";
 // Protected Components
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 // Component Pages
-import LandingPage from "../LandingPage/LandingPage";
-import AboutPage from "../AboutPage/AboutPage";
-import UserPage from "../UserPage/UserPage";
-import InfoPage from "../InfoPage/InfoPage";
+import LandingPage from "../Pages/LandingPage/LandingPage";
+import AboutPage from "../Pages/AboutPage/AboutPage";
+import UserPage from "../Pages/UserPage/UserPage";
+import InfoPage from "../Pages/InfoPage/InfoPage";
 
 import "./App.css";
 

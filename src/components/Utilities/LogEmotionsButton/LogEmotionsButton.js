@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 
 import LogStage1 from "../LogStage1/LogStage1";
+import LogStage2 from "../LogStage2/LogStage2";
 
 const LogEmotionsButton = (props) => {
   // ----- Functional State with React useState Hook -----
@@ -58,7 +59,7 @@ const LogEmotionsButton = (props) => {
       case 2:
         return (
           // Need Stage 2 Component
-          <h1>Stage 2</h1>
+          <LogStage2 nextStage={nextStage} prevStage={prevStage} />
         );
       case 3:
         return (

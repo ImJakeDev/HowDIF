@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 
-const LogEmotionsButton = (props) => {
+const LogStage1 = (props) => {
 
   return (
     <div>
@@ -31,4 +31,4 @@ const LogEmotionsButton = (props) => {
   );
 };
 
-export default connect()(LogEmotionsButton);
+export default connect()(LogStage1);

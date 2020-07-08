@@ -38,8 +38,8 @@ const LogStage3 = (props) => {
         <Button onClick={props.prevStage} color="primary">
           Back
         </Button>
-        <Button onClick={props.nextStage} color="primary">
-          Next
+        <Button onClick={props.handleClose} color="primary">
+          Finish
         </Button>
       </DialogActions>
       {/* ----- This is the end of the Dialog Area ----- */}

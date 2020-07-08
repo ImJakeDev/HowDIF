@@ -60,12 +60,7 @@ const LogEmotionsButton = (props) => {
       case 3:
         return (
           // Need Stage 3 Component
-          <LogStage3 nextStage={nextStage} prevStage={prevStage} />
-        );
-      case 4:
-        return (
-          // Need Stage 4 Component
-          <h1>Stage 4</h1>
+          <LogStage3 handleClose={handleClose} prevStage={prevStage} />
         );
       default:
         console.log("This is a multi-stage dialog built with React.");

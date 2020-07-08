@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
-import "./UserPage.css";
+import LogEmotionsButton from "../../Utilities/LogEmotionsButton/LogEmotionsButton";
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -12,7 +12,7 @@ const UserPage = (props) => (
       <center>
         <h2>How do you feel, {props.user.username}?</h2>
         <br />
-        <button>Log Emotion</button>
+        <LogEmotionsButton />
         <br />
       </center>
       <center>

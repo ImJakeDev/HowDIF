@@ -10,6 +10,8 @@ import {
   DialogTitle,
 } from "@material-ui/core";
 
+import LogStage1 from "../LogStage1/LogStage1";
+
 const LogEmotionsButton = (props) => {
   // ----- Functional State with React useState Hook -----
   // primary_emotion - State default null
@@ -46,6 +48,33 @@ const LogEmotionsButton = (props) => {
     setOpen(false);
   };
 
+  const renderSwitch = () => {
+    switch (stage) {
+      case 1:
+        return (
+          // Need Stage 1 Component
+          <LogStage1 nextStage={nextStage} />
+        );
+      case 2:
+        return (
+          // Need Stage 2 Component
+          <h1>Stage 2</h1>
+        );
+      case 3:
+        return (
+          // Need Stage 3 Component
+          <h1>Stage 3</h1>
+        );
+      case 4:
+        return (
+          // Need Stage 4 Component
+          <h1>Stage 4</h1>
+        );
+      default:
+        console.log("This is a multi-stage dialog built with React.");
+    }
+  }
+
   return (
     <div>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
@@ -57,7 +86,8 @@ const LogEmotionsButton = (props) => {
         aria-labelledby="form-dialog-title"
       >
         {/* ----- This is the start of the Dialog Area ----- */}
-        <DialogTitle id="form-dialog-title">
+        {renderSwitch(stage)}
+        {/* <DialogTitle id="form-dialog-title">
           Select a Primary Emotion you are feeling.
         </DialogTitle>
         <DialogContent>
@@ -66,13 +96,16 @@ const LogEmotionsButton = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={nextStage} color="primary">
+            Next
+          </Button> */}
+          {/* <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
           <Button onClick={handleClose} color="primary">
             Subscribe
-          </Button>
-        </DialogActions>
+          </Button> */}
+        {/* </DialogActions> */}
         {/* ----- This is the end of the Dialog Area ----- */}
       </Dialog>
     </div>

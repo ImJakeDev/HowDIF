@@ -2,16 +2,12 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   Button,
-  TextField,
   Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
 } from "@material-ui/core";
 
 import LogStage1 from "../LogStage1/LogStage1";
 import LogStage2 from "../LogStage2/LogStage2";
+import LogStage3 from "../LogStage3/LogStage3";
 
 const LogEmotionsButton = (props) => {
   // ----- Functional State with React useState Hook -----
@@ -64,7 +60,7 @@ const LogEmotionsButton = (props) => {
       case 3:
         return (
           // Need Stage 3 Component
-          <h1>Stage 3</h1>
+          <LogStage3 nextStage={nextStage} prevStage={prevStage} />
         );
       case 4:
         return (
@@ -88,25 +84,6 @@ const LogEmotionsButton = (props) => {
       >
         {/* ----- This is the start of the Dialog Area ----- */}
         {renderSwitch(stage)}
-        {/* <DialogTitle id="form-dialog-title">
-          Select a Primary Emotion you are feeling.
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            anger, fear, sadness, disgust, surprise, anticipation, trust, or joy
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={nextStage} color="primary">
-            Next
-          </Button> */}
-          {/* <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
-          </Button> */}
-        {/* </DialogActions> */}
         {/* ----- This is the end of the Dialog Area ----- */}
       </Dialog>
     </div>

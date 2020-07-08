@@ -19,6 +19,8 @@ import LandingPage from "../../Pages/LandingPage/LandingPage";
 import AboutPage from "../../Pages/AboutPage/AboutPage";
 import UserPage from "../../Pages/UserPage/UserPage";
 import InfoPage from "../../Pages/InfoPage/InfoPage";
+import LoginPage from "../../Pages/LoginPage/LoginPage";
+import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
 
 import "./Content.css";
 
@@ -39,6 +41,8 @@ class Content extends Component {
             This is a route anyone can see, no login necessary */}
             <Route exact path="/about" component={AboutPage} />
             <Route exact path="/landing" component={LandingPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/register" component={RegisterPage} />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

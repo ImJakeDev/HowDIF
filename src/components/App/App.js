@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import Nav from "../Layout/Nav/Nav";
 import Footer from "../Layout/Footer/Footer";
 // Protected Components
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "../Utilities/ProtectedRoute/ProtectedRoute";
 // Component Pages
 import LandingPage from "../Pages/LandingPage/LandingPage";
 import AboutPage from "../Pages/AboutPage/AboutPage";

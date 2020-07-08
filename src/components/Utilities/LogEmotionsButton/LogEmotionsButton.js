@@ -43,6 +43,7 @@ const LogEmotionsButton = (props) => {
 
   const handleClose = () => {
     setOpen(false);
+    setStage(1);
   };
 
   const renderSwitch = () => {

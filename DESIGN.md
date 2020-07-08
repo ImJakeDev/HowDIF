@@ -20,3 +20,13 @@
     - 
   - I will need to make a home page
   - 
+
+3. Material-ui Multiple step Dialog component
+ - Button
+ - Dialog
+ - Stepper
+ - Stages/Steps
+  - Primary Emotion Stage
+  - Primary Emotion Intensity Stage
+  - Primary Emotion Questions Stage
+ - 

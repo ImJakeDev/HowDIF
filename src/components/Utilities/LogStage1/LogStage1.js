@@ -43,7 +43,7 @@ const LogStage1 = (props) => {
         <Grid container spacing={3}>
           <Grid item xs={3}>
             <Button
-              onClick={handleClickForEmo("anger")}
+              onClick={() => handleClickForEmo("anger")}
               className={classes.emotionButtons}
               variant="contained"
               color="primary"
@@ -53,7 +53,7 @@ const LogStage1 = (props) => {
           </Grid>
           <Grid item xs={3}>
             <Button
-              onClick={handleClickForEmo("sadness")}
+              onClick={() => handleClickForEmo("sadness")}
               className={classes.emotionButtons}
               variant="contained"
               color="primary"
@@ -63,7 +63,7 @@ const LogStage1 = (props) => {
           </Grid>
           <Grid item xs={3}>
             <Button
-              onClick={handleClickForEmo("fear")}
+              onClick={() => handleClickForEmo("fear")}
               className={classes.emotionButtons}
               variant="contained"
               color="primary"
@@ -73,7 +73,7 @@ const LogStage1 = (props) => {
           </Grid>
           <Grid item xs={3}>
             <Button
-              onClick={handleClickForEmo("disgust")}
+              onClick={() => handleClickForEmo("disgust")}
               className={classes.emotionButtons}
               variant="contained"
               color="primary"
@@ -83,7 +83,7 @@ const LogStage1 = (props) => {
           </Grid>
           <Grid item xs={3}>
             <Button
-              onClick={handleClickForEmo("surprise")}
+              onClick={() => handleClickForEmo("surprise")}
               className={classes.emotionButtons}
               variant="contained"
               color="primary"
@@ -93,7 +93,7 @@ const LogStage1 = (props) => {
           </Grid>
           <Grid item xs={3}>
             <Button
-              onClick={handleClickForEmo("anticipation")}
+              onClick={() => handleClickForEmo("anticipation")}
               className={classes.emotionButtons}
               variant="contained"
               color="primary"
@@ -103,7 +103,7 @@ const LogStage1 = (props) => {
           </Grid>
           <Grid item xs={3}>
             <Button
-              onClick={handleClickForEmo("trust")}
+              onClick={() => handleClickForEmo("trust")}
               className={classes.emotionButtons}
               variant="contained"
               color="primary"
@@ -113,7 +113,7 @@ const LogStage1 = (props) => {
           </Grid>
           <Grid item xs={3}>
             <Button
-              onClick={handleClickForEmo("joy")}
+              onClick={() => handleClickForEmo("joy")}
               className={classes.emotionButtons}
               variant="contained"
               color="primary"

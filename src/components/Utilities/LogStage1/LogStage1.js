@@ -36,80 +36,82 @@ const LogStage1 = (props) => {
         Select a Primary Emotion you are feeling.
       </DialogTitle>
       <DialogContent>
-        <Grid container spacing={3}>
-          <Grid item xs={3}>
-            <Button
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              anger
-            </Button>
+        <DialogContentText>
+          <Grid container spacing={3}>
+            <Grid item xs={3}>
+              <Button
+                className={classes.emotionButtons}
+                variant="contained"
+                color="primary"
+              >
+                anger
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                className={classes.emotionButtons}
+                variant="contained"
+                color="primary"
+              >
+                sadness
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                className={classes.emotionButtons}
+                variant="contained"
+                color="primary"
+              >
+                fear
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                className={classes.emotionButtons}
+                variant="contained"
+                color="primary"
+              >
+                disgust
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                className={classes.emotionButtons}
+                variant="contained"
+                color="primary"
+              >
+                surprise
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                className={classes.emotionButtons}
+                variant="contained"
+                color="primary"
+              >
+                anticipation
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                className={classes.emotionButtons}
+                variant="contained"
+                color="primary"
+              >
+                trust
+              </Button>
+            </Grid>
+            <Grid item xs={3}>
+              <Button
+                className={classes.emotionButtons}
+                variant="contained"
+                color="primary"
+              >
+                joy
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={3}>
-            <Button
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              sadness
-            </Button>
-          </Grid>
-          <Grid item xs={3}>
-            <Button
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              fear
-            </Button>
-          </Grid>
-          <Grid item xs={3}>
-            <Button
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              disgust
-            </Button>
-          </Grid>
-          <Grid item xs={3}>
-            <Button
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              surprise
-            </Button>
-          </Grid>
-          <Grid item xs={3}>
-            <Button
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              anticipation
-            </Button>
-          </Grid>
-          <Grid item xs={3}>
-            <Button
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              trust
-            </Button>
-          </Grid>
-          <Grid item xs={3}>
-            <Button
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              joy
-            </Button>
-          </Grid>
-        </Grid>
+        </DialogContentText>
       </DialogContent>
       <DialogActions>
         <MobileStepper

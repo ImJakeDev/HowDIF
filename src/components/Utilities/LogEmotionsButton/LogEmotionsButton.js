@@ -34,7 +34,7 @@ const LogEmotionsButton = (props) => {
 
   const useStyles = makeStyles({
     root: {
-      maxWidth: 400,
+      maxWidth: 600,
       flexGrow: 1,
     },
   });

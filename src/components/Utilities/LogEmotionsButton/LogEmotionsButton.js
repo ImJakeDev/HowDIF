@@ -14,14 +14,23 @@ const LogEmotionsButton = (props) => {
   // ----- Functional State with React useState Hook -----
   // primary_emotion - State default null
   const [primaryEmotion, setPrimaryEmotion] = useState(null);
-  // intensity_emotion - State default null
-  const [intensityEmotion, setIntensityEmotion] = useState(null);
-  // intensity_level - State default 0
-  const [intensityLevel, setIntensityLevel] = useState(0);
-  // how_feel - State default ""
-  const [howFeel, setHowFeel] = useState("");
-  // why_feel - State default ""
-  const [whyFeel, setWhyFeel] = useState("");
+  // // intensity_emotion - State default null
+  // const [intensityEmotion, setIntensityEmotion] = useState(null);
+  // // intensity_level - State default 0
+  // const [intensityLevel, setIntensityLevel] = useState(0);
+  // // how_feel - State default ""
+  // const [howFeel, setHowFeel] = useState("");
+  // // why_feel - State default ""
+  // const [whyFeel, setWhyFeel] = useState("");
+
+  const [emotionLog, setEmotionLog] = useState({
+    primaryEmotion: null,
+    intensityEmotion: null,
+    intensityLevel: 0,
+    howFeel: "",
+    whyFeel: "",
+  })
+
   // Stage state which will render the correct stage of the process of the emotion log
   // default is Stage 1 - Will begin at Stage 1
   const [stage, setStage] = useState(1);
@@ -73,6 +82,8 @@ const LogEmotionsButton = (props) => {
             activeStep={activeStep}
             classes={classes}
             theme={theme}
+            primaryEmotion={primaryEmotion}
+            setPrimaryEmotion={setPrimaryEmotion}
           />
         );
       case 2:

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   Button,
@@ -20,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
   },
   emotionButtons: {
     padding: theme.spacing(1),
-    // textAlign: "center",
-    // color: theme.palette.text.secondary,
     whiteSpace: "nowrap",
     marginBottom: theme.spacing(1),
   },
@@ -29,6 +27,12 @@ const useStyles = makeStyles((theme) => ({
 
 const LogStage1 = (props) => {
   const classes = useStyles();
+
+  const handleClickForEmo = (param) => {
+    props.setPrimaryEmotion(param);
+    console.log(param);
+  };
+
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
@@ -36,82 +40,89 @@ const LogStage1 = (props) => {
         Select a Primary Emotion you are feeling.
       </DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          <Grid container spacing={3}>
-            <Grid item xs={3}>
-              <Button
-                className={classes.emotionButtons}
-                variant="contained"
-                color="primary"
-              >
-                anger
-              </Button>
-            </Grid>
-            <Grid item xs={3}>
-              <Button
-                className={classes.emotionButtons}
-                variant="contained"
-                color="primary"
-              >
-                sadness
-              </Button>
-            </Grid>
-            <Grid item xs={3}>
-              <Button
-                className={classes.emotionButtons}
-                variant="contained"
-                color="primary"
-              >
-                fear
-              </Button>
-            </Grid>
-            <Grid item xs={3}>
-              <Button
-                className={classes.emotionButtons}
-                variant="contained"
-                color="primary"
-              >
-                disgust
-              </Button>
-            </Grid>
-            <Grid item xs={3}>
-              <Button
-                className={classes.emotionButtons}
-                variant="contained"
-                color="primary"
-              >
-                surprise
-              </Button>
-            </Grid>
-            <Grid item xs={3}>
-              <Button
-                className={classes.emotionButtons}
-                variant="contained"
-                color="primary"
-              >
-                anticipation
-              </Button>
-            </Grid>
-            <Grid item xs={3}>
-              <Button
-                className={classes.emotionButtons}
-                variant="contained"
-                color="primary"
-              >
-                trust
-              </Button>
-            </Grid>
-            <Grid item xs={3}>
-              <Button
-                className={classes.emotionButtons}
-                variant="contained"
-                color="primary"
-              >
-                joy
-              </Button>
-            </Grid>
+        <Grid container spacing={3}>
+          <Grid item xs={3}>
+            <Button
+              onClick={handleClickForEmo("anger")}
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              anger
+            </Button>
           </Grid>
-        </DialogContentText>
+          <Grid item xs={3}>
+            <Button
+              onClick={handleClickForEmo("sadness")}
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              sadness
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              onClick={handleClickForEmo("fear")}
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              fear
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              onClick={handleClickForEmo("disgust")}
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              disgust
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              onClick={handleClickForEmo("surprise")}
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              surprise
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              onClick={handleClickForEmo("anticipation")}
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              anticipation
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              onClick={handleClickForEmo("trust")}
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              trust
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              onClick={handleClickForEmo("joy")}
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              joy
+            </Button>
+          </Grid>
+        </Grid>
+        <DialogContentText>{props.primaryEmotion}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <MobileStepper

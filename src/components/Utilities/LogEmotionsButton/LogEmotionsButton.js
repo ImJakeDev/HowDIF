@@ -30,6 +30,8 @@ const LogEmotionsButton = (props) => {
 
   const [activeStep, setActiveStep] = useState(0);
 
+  const theme = useTheme();
+
   const useStyles = makeStyles({
     root: {
       maxWidth: 400,
@@ -101,7 +103,6 @@ const LogEmotionsButton = (props) => {
   }
 
   const classes = useStyles();
-  const theme = useTheme();
 
   return (
     <div>

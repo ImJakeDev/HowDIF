@@ -6,11 +6,29 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Grid,
   MobileStepper,
 } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "grid",
+    gridTemplateColumns: "repeat(12, 1fr)",
+    gridGap: theme.spacing(3),
+  },
+  emotionButtons: {
+    padding: theme.spacing(1),
+    // textAlign: "center",
+    // color: theme.palette.text.secondary,
+    whiteSpace: "nowrap",
+    marginBottom: theme.spacing(1),
+  },
+}));
 
 const LogStage1 = (props) => {
+  const classes = useStyles();
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
@@ -18,9 +36,80 @@ const LogStage1 = (props) => {
         Select a Primary Emotion you are feeling.
       </DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          anger, fear, sadness, disgust, surprise, anticipation, trust, or joy
-        </DialogContentText>
+        <Grid container spacing={3}>
+          <Grid item xs={3}>
+            <Button
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              anger
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              sadness
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              fear
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              disgust
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              surprise
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              anticipation
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              trust
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button
+              className={classes.emotionButtons}
+              variant="contained"
+              color="primary"
+            >
+              joy
+            </Button>
+          </Grid>
+        </Grid>
       </DialogContent>
       <DialogActions>
         <MobileStepper

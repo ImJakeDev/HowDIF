@@ -7,10 +7,77 @@ import {
   DialogContentText,
   DialogTitle,
   MobileStepper,
+  Slider,
+  Typography,
 } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: 300,
+  },
+  margin: {
+    height: theme.spacing(3),
+  },
+}));
+
+const marks = [
+  {
+    value: -5,
+    label: "-5",
+  },
+  {
+    value: -4,
+    label: "-4",
+  },
+  {
+    value: -3,
+    label: "-3",
+  },
+  {
+    value: -2,
+    label: "-2",
+  },
+  {
+    value: -1,
+    label: "-1",
+  },
+  {
+    value: 0,
+    label: "0",
+  },
+  {
+    value: 1,
+    label: "1",
+  },
+  {
+    value: 2,
+    label: "2",
+  },
+  {
+    value: 3,
+    label: "3",
+  },
+  {
+    value: 4,
+    label: "4",
+  },
+  {
+    value: 5,
+    label: "5",
+  },
+];
+
+function valueText(value) {
+  const newVal = value;
+  console.log(newVal);
+  return newVal;
+}
+
 
 const LogStage2 = (props) => {
+  const classes = useStyles();
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
@@ -19,6 +86,25 @@ const LogStage2 = (props) => {
       </DialogTitle>
       <DialogContent>
         <DialogContentText>Strong ... or ... Not Strong</DialogContentText>
+        <div className={classes.root}>
+          <Typography id="discrete-slider-custom" gutterBottom>
+            Not Strong
+          </Typography>
+          <Typography id="discrete-slider-custom" gutterBottom>
+          Strong
+          </Typography>
+          <Slider
+            track={false}
+            defaultValue={0}
+            getAriaValueText={valueText}
+            aria-labelledby="track-false-slider"
+            step={1}
+            min={-5}
+            max={5}
+            valueLabelDisplay="auto"
+            marks={marks}
+          />
+        </div>
       </DialogContent>
       <DialogActions>
         <MobileStepper

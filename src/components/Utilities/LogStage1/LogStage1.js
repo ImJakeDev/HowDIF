@@ -8,21 +8,9 @@ import {
   DialogTitle,
   MobileStepper,
 } from "@material-ui/core";
-// import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
-// const useStyles = makeStyles({
-//   root: {
-//     maxWidth: 400,
-//     flexGrow: 1,
-//   },
-// });
-
 const LogStage1 = (props) => {
-
-  // const classes = useStyles();
-  // const theme = useTheme();
-
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}

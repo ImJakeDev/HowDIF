@@ -72,9 +72,6 @@ const LogStage3 = (props) => {
             </Button>
           }
         />
-        {/* <Button onClick={props.handleClose} color="primary">
-          Finish
-        </Button> */}
       </DialogActions>
       {/* ----- This is the end of the Dialog Area ----- */}
     </div>

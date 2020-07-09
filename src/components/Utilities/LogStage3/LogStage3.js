@@ -6,7 +6,9 @@ import {
   DialogContent,
   DialogTitle,
   TextField,
+  MobileStepper,
 } from "@material-ui/core";
+import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
 const LogStage3 = (props) => {
   return (
@@ -35,12 +37,44 @@ const LogStage3 = (props) => {
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={props.prevStage} color="primary">
-          Back
-        </Button>
-        <Button onClick={props.handleClose} color="primary">
+        <MobileStepper
+          variant="progress"
+          steps={3}
+          position="static"
+          activeStep={props.activeStep}
+          className={props.classes.root}
+          nextButton={
+            <Button
+              size="small"
+              onClick={props.handleClose}
+              disabled={props.activeStep === 3}
+            >
+              Finish
+              {props.theme.direction === "rtl" ? (
+                <KeyboardArrowLeft />
+              ) : (
+                <KeyboardArrowRight />
+              )}
+            </Button>
+          }
+          backButton={
+            <Button
+              size="small"
+              onClick={props.prevStage}
+              disabled={props.activeStep === 0}
+            >
+              {props.theme.direction === "rtl" ? (
+                <KeyboardArrowRight />
+              ) : (
+                <KeyboardArrowLeft />
+              )}
+              Back
+            </Button>
+          }
+        />
+        {/* <Button onClick={props.handleClose} color="primary">
           Finish
-        </Button>
+        </Button> */}
       </DialogActions>
       {/* ----- This is the end of the Dialog Area ----- */}
     </div>

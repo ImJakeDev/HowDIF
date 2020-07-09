@@ -4,6 +4,7 @@ import {
   Button,
   Dialog,
 } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import LogStage1 from "../LogStage1/LogStage1";
 import LogStage2 from "../LogStage2/LogStage2";
@@ -27,14 +28,25 @@ const LogEmotionsButton = (props) => {
   // Material-ui state for Dialog component rendering
   const [open, setOpen] = useState(false);
 
+  const [activeStep, setActiveStep] = useState(0);
+
+  const useStyles = makeStyles({
+    root: {
+      maxWidth: 400,
+      flexGrow: 1,
+    },
+  });
+
   // Proceed to next stage
   const nextStage = () => {
     setStage(stage + 1);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   // Proceed to prev stage
   const prevStage = () => {
     setStage(stage - 1);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleClickOpen = () => {
@@ -44,29 +56,52 @@ const LogEmotionsButton = (props) => {
   const handleClose = () => {
     setOpen(false);
     setStage(1);
+    setActiveStep(0);
   };
 
   const renderSwitch = () => {
+    
     switch (stage) {
       case 1:
         return (
           // Need Stage 1 Component
-          <LogStage1 nextStage={nextStage} />
+          <LogStage1
+            handleClose={handleClose}
+            nextStage={nextStage}
+            activeStep={activeStep}
+            classes={classes}
+            theme={theme}
+          />
         );
       case 2:
         return (
           // Need Stage 2 Component
-          <LogStage2 nextStage={nextStage} prevStage={prevStage} />
+          <LogStage2
+            prevStage={prevStage}
+            nextStage={nextStage}
+            activeStep={activeStep}
+            classes={classes}
+            theme={theme}
+          />
         );
       case 3:
         return (
           // Need Stage 3 Component
-          <LogStage3 handleClose={handleClose} prevStage={prevStage} />
+          <LogStage3
+            handleClose={handleClose}
+            prevStage={prevStage}
+            activeStep={activeStep}
+            classes={classes}
+            theme={theme}
+          />
         );
       default:
         console.log("This is a multi-stage dialog built with React.");
     }
   }
+
+  const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <div>

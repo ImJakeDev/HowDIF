@@ -20,6 +20,7 @@ const UserPage = (props) => (
         <br />
         {props.user.id && (
           <div>
+            <Link to="/pie">Emotion Pie</Link>
             <Link to="/radar">Emotional Radar</Link>
           </div>
         )}

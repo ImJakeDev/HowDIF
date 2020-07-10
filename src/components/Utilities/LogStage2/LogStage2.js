@@ -75,6 +75,8 @@ function valueText(value) {
 }
 
 const LogStage2 = (props) => {
+  // I got some bugs in here with intensityEmotion
+
   const [numValue, setNumValue] = useState(0);
 
   const [emotion, setEmotion] = useState(null);

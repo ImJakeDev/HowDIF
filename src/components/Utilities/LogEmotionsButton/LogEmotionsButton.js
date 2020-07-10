@@ -14,10 +14,10 @@ const LogEmotionsButton = (props) => {
   // ----- Functional State with React useState Hook -----
   // primary_emotion - State default null
   const [primaryEmotion, setPrimaryEmotion] = useState(null);
-  // // intensity_emotion - State default null
-  // const [intensityEmotion, setIntensityEmotion] = useState(null);
-  // // intensity_level - State default 0
-  // const [intensityLevel, setIntensityLevel] = useState(0);
+  // intensity_emotion - State default null
+  const [intensityEmotion, setIntensityEmotion] = useState(null);
+  // intensity_level - State default 0
+  const [intensityLevel, setIntensityLevel] = useState(0);
   // // how_feel - State default ""
   // const [howFeel, setHowFeel] = useState("");
   // // why_feel - State default ""
@@ -95,6 +95,8 @@ const LogEmotionsButton = (props) => {
             activeStep={activeStep}
             classes={classes}
             theme={theme}
+            intensityLevel={intensityLevel}
+            setIntensityLevel={setIntensityLevel}
           />
         );
       case 3:

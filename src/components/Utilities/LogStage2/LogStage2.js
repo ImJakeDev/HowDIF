@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   Button,
@@ -71,13 +71,21 @@ const marks = [
 
 function valueText(value) {
   const newVal = value;
-  console.log(newVal);
+  // console.log(newVal);
   return newVal;
 }
 
-
 const LogStage2 = (props) => {
+  const [numValue, setNumValue] = useState(0);
+
   const classes = useStyles();
+
+  const handleChangeForInLvl = (event, numValue) => {
+    setNumValue(numValue);
+    props.setIntensityLevel(numValue);
+    console.log(numValue);
+  };
+
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
@@ -85,15 +93,17 @@ const LogStage2 = (props) => {
         How intense are you feeling (emotion)?
       </DialogTitle>
       <DialogContent>
-        <DialogContentText>Strong ... or ... Not Strong</DialogContentText>
         <div className={classes.root}>
           <Typography id="discrete-slider-custom" gutterBottom>
             Not Strong
           </Typography>
           <Typography id="discrete-slider-custom" gutterBottom>
-          Strong
+            Strong
           </Typography>
           <Slider
+            // value={props.intensityLevel}
+            value={numValue}
+            onChange={handleChangeForInLvl}
             track={false}
             defaultValue={0}
             getAriaValueText={valueText}
@@ -105,6 +115,7 @@ const LogStage2 = (props) => {
             marks={marks}
           />
         </div>
+        <DialogContentText>{props.intensityLevel}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <MobileStepper

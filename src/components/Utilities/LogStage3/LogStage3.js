@@ -4,6 +4,7 @@ import {
   Button,
   DialogActions,
   DialogContent,
+  DialogContentText,
   DialogTitle,
   TextField,
   MobileStepper,
@@ -11,6 +12,15 @@ import {
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
 const LogStage3 = (props) => {
+
+  const handleChangeForHow = (e) => {
+    props.setHowFeel(e.target.value);
+  }
+
+  const handleChangeForWhy = (e) => {
+    props.setWhyFeel(e.target.value);
+  };
+
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
@@ -22,10 +32,12 @@ const LogStage3 = (props) => {
           multiline
           rows={4}
           variant="outlined"
+          onChange={(event) => handleChangeForHow(event)}
         />
+        <DialogContentText>{props.howFeel}</DialogContentText>
       </DialogContent>
       <DialogTitle id="form-dialog-title">
-        Describe why you are feeling (emotion)?
+        Describe why you are feeling {props.primaryEmotion}?
       </DialogTitle>
       <DialogContent>
         <TextField
@@ -34,7 +46,9 @@ const LogStage3 = (props) => {
           multiline
           rows={4}
           variant="outlined"
+          onChange={(event) => handleChangeForWhy(event)}
         />
+        <DialogContentText>{props.whyFeel}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <MobileStepper

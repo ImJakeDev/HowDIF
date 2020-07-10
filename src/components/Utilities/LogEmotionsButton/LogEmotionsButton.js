@@ -19,9 +19,9 @@ const LogEmotionsButton = (props) => {
   // intensity_level - State default 0
   const [intensityLevel, setIntensityLevel] = useState(0);
   // // how_feel - State default ""
-  // const [howFeel, setHowFeel] = useState("");
+  const [howFeel, setHowFeel] = useState("");
   // // why_feel - State default ""
-  // const [whyFeel, setWhyFeel] = useState("");
+  const [whyFeel, setWhyFeel] = useState("");
 
   const [emotionLog, setEmotionLog] = useState({
     primaryEmotion: null,
@@ -111,6 +111,11 @@ const LogEmotionsButton = (props) => {
             activeStep={activeStep}
             classes={classes}
             theme={theme}
+            primaryEmotion={primaryEmotion}
+            howFeel={howFeel}
+            setHowFeel={setHowFeel}
+            whyFeel={whyFeel}
+            setWhyFeel={setWhyFeel}
           />
         );
       default:

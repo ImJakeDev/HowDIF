@@ -101,11 +101,10 @@ const LogStage2 = (props) => {
             Strong
           </Typography>
           <Slider
-            // value={props.intensityLevel}
             value={numValue}
             onChange={handleChangeForInLvl}
             track={false}
-            defaultValue={0}
+            defaultValue={numValue}
             getAriaValueText={valueText}
             aria-labelledby="track-false-slider"
             step={1}

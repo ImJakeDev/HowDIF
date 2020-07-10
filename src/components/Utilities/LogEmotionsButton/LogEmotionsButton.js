@@ -77,15 +77,8 @@ const LogEmotionsButton = (props) => {
   };
 
   const handleCloseAndDispatch = (emotionLog) => {
-    // setEmotionLog({
-    //   primaryEmotion: primaryEmotion,
-    //   intensityEmotion: intensityEmotion,
-    //   intensityLevel: intensityLevel,
-    //   howFeel: howFeel,
-    //   whyFeel: whyFeel,
-    // });
     console.log(emotionLog);
-    // props.dispatch({ type: "ADD_EMOTION_LOG", payload: emotionLog });
+    props.dispatch({ type: "ADD_EMOTION_LOG", payload: emotionLog });
     handleClose();
   };
 

@@ -16,11 +16,11 @@ router.post("/log", rejectUnauthenticated, (req, res) => {
   const queryText = `INSERT INTO "emotion_logged" ("user_id", "primary_emotion", "intensity_emotion", "intensity_level", "how_feel", "why_feel") VALUES ($1, $2, $3, $4, $5, $6);`;
   const queryValues = [
     user.id,
-    log.primary_emotion,
-    log.intensity_emotion,
-    Number(log.intensity_level),
-    log.how_feel,
-    log.why_feel,
+    log.primaryEmotion,
+    log.intensityEmotion,
+    Number(log.intensityLevel),
+    log.howFeel,
+    log.whyFeel,
   ];
   console.log(queryValues);
   pool

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   Button,
@@ -6,24 +6,46 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField,
   MobileStepper,
 } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
 const LogStage4 = (props) => {
+  
+  const [emotionLog, setEmotionLog] = useState({
+    primaryEmotion: props.primaryEmotion,
+    intensityEmotion: props.intensityEmotion,
+    intensityLevel: props.intensityLevel,
+    howFeel: props.howFeel,
+    whyFeel: props.whyFeel,
+  });
+
+  const theEnd = () => {
+    setEmotionLog({
+      primaryEmotion: props.primaryEmotion,
+      intensityEmotion: props.intensityEmotion,
+      intensityLevel: props.intensityLevel,
+      howFeel: props.howFeel,
+      whyFeel: props.whyFeel,
+    });
+    console.log(emotionLog);
+
+    props.handleCloseAndDispatch(emotionLog); 
+  }
+
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
       <DialogTitle id="form-dialog-title">Review Emotional Log</DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          {props.primaryEmotion}
-          {props.intensityLevel}
-          {props.intensityEmotion}
-          {props.howFeel}
-          {props.whyFeel}
-        </DialogContentText>
+        <DialogContentText>Here is you log -></DialogContentText>
+        <ul>
+          <li>{props.primaryEmotion}</li>
+          <li>{props.intensityLevel}</li>
+          <li>{props.intensityEmotion}</li>
+          <li>{props.howFeel}</li>
+          <li>{props.whyFeel}</li>
+        </ul>
       </DialogContent>
       <DialogActions>
         <MobileStepper
@@ -35,7 +57,7 @@ const LogStage4 = (props) => {
           nextButton={
             <Button
               size="small"
-              onClick={props.handleClose}
+              onClick={theEnd}
               disabled={props.activeStep === 4}
             >
               Finish

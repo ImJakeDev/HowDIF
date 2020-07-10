@@ -24,13 +24,13 @@ const LogEmotionsButton = (props) => {
   // // why_feel - State default null
   const [whyFeel, setWhyFeel] = useState(null);
 
-  const [emotionLog, setEmotionLog] = useState({
-    primaryEmotion: null,
-    intensityEmotion: null,
-    intensityLevel: 0,
-    howFeel: "",
-    whyFeel: "",
-  })
+  // const [emotionLog, setEmotionLog] = useState({
+  //   primaryEmotion: null,
+  //   intensityEmotion: null,
+  //   intensityLevel: 0,
+  //   howFeel: null,
+  //   whyFeel: null,
+  // })
 
   // Stage state which will render the correct stage of the process of the emotion log
   // default is Stage 1 - Will begin at Stage 1
@@ -76,12 +76,24 @@ const LogEmotionsButton = (props) => {
     setWhyFeel(null);
   };
 
+  const handleCloseAndDispatch = (emotionLog) => {
+    // setEmotionLog({
+    //   primaryEmotion: primaryEmotion,
+    //   intensityEmotion: intensityEmotion,
+    //   intensityLevel: intensityLevel,
+    //   howFeel: howFeel,
+    //   whyFeel: whyFeel,
+    // });
+    console.log(emotionLog);
+    // props.dispatch({ type: "ADD_EMOTION_LOG", payload: emotionLog });
+    handleClose();
+  };
+
   const renderSwitch = () => {
     
     switch (stage) {
       case 1:
         return (
-          // Need Stage 1 Component
           <LogStage1
             handleClose={handleClose}
             nextStage={nextStage}
@@ -94,7 +106,6 @@ const LogEmotionsButton = (props) => {
         );
       case 2:
         return (
-          // Need Stage 2 Component
           <LogStage2
             prevStage={prevStage}
             nextStage={nextStage}
@@ -110,7 +121,6 @@ const LogEmotionsButton = (props) => {
         );
       case 3:
         return (
-          // Need Stage 3 Component
           <LogStage3
             prevStage={prevStage}
             nextStage={nextStage}
@@ -127,7 +137,7 @@ const LogEmotionsButton = (props) => {
       case 4:
         return (
           <LogStage4
-            handleClose={handleClose}
+            handleCloseAndDispatch={handleCloseAndDispatch}
             prevStage={prevStage}
             activeStep={activeStep}
             classes={classes}

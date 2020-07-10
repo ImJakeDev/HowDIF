@@ -95,8 +95,11 @@ const LogEmotionsButton = (props) => {
             activeStep={activeStep}
             classes={classes}
             theme={theme}
+            primaryEmotion={primaryEmotion}
             intensityLevel={intensityLevel}
             setIntensityLevel={setIntensityLevel}
+            intensityEmotion={intensityEmotion}
+            setIntensityEmotion={setIntensityEmotion}
           />
         );
       case 3:

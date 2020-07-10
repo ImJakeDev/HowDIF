@@ -71,34 +71,94 @@ const marks = [
 
 function valueText(value) {
   const newVal = value;
-  // console.log(newVal);
   return newVal;
 }
 
 const LogStage2 = (props) => {
   const [numValue, setNumValue] = useState(0);
 
+  const [emotion, setEmotion] = useState(null);
+
   const classes = useStyles();
 
+
+  const renderNotStrongEmotion = () => {
+    switch (emotion) {
+      case "anger":
+        return "annoyance";
+      case "sadness":
+        return "gloominess";
+      case "fear":
+        return "timidity";
+      case "disgust":
+        return "dislike";
+      case "surprise":
+        return "uncertainty";
+      case "anticipation":
+        return "interest";
+      case "trust":
+        return "acceptance";
+      case "joy":
+        return "serenity";
+      default:
+        return "Not Strong";
+    }
+  };
+
+  const renderStrongEmotion = () => {
+    switch (emotion) {
+      case "anger":
+        return "fury";
+      case "sadness":
+        return "grief";
+      case "fear":
+        return "terror";
+      case "disgust":
+        return "loathing";
+      case "surprise":
+        return "amazement";
+      case "anticipation":
+        return "vigilance";
+      case "trust":
+        return "admiration";
+      case "joy":
+        return "ecstasy";
+      default:
+        return "Strong";
+    }
+  };
+  
   const handleChangeForInLvl = (event, numValue) => {
+    setEmotion(props.primaryEmotion);
     setNumValue(numValue);
     props.setIntensityLevel(numValue);
     console.log(numValue);
+    intensityEmotionOptions(numValue);
+  };
+
+  const intensityEmotionOptions = (numValue) => {
+    if (numValue > 0) {
+      return props.setIntensityEmotion(renderStrongEmotion);
+    } else if (numValue < 0) {
+      return props.setIntensityEmotion(renderNotStrongEmotion);
+    } else {
+      return props.setIntensityEmotion(props.primaryEmotion);
+    }
   };
 
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
       <DialogTitle id="form-dialog-title">
-        How intense are you feeling (emotion)?
+        How intense are you feeling {props.primaryEmotion}?
       </DialogTitle>
       <DialogContent>
         <div className={classes.root}>
           <Typography id="discrete-slider-custom" gutterBottom>
-            Not Strong
+            {renderNotStrongEmotion()}
           </Typography>
           <Typography id="discrete-slider-custom" gutterBottom>
-            Strong
+            {renderStrongEmotion()}
           </Typography>
           <Slider
             value={numValue}
@@ -115,6 +175,7 @@ const LogStage2 = (props) => {
           />
         </div>
         <DialogContentText>{props.intensityLevel}</DialogContentText>
+        <DialogContentText>{props.intensityEmotion}</DialogContentText>
       </DialogContent>
       <DialogActions>
         <MobileStepper

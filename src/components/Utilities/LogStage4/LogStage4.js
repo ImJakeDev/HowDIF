@@ -38,7 +38,7 @@ const LogStage4 = (props) => {
       {/* ----- This is the start of the Dialog Area ----- */}
       <DialogTitle id="form-dialog-title">Review Emotional Log</DialogTitle>
       <DialogContent>
-        <DialogContentText>Here is you log -></DialogContentText>
+        <DialogContentText>Here is you log:</DialogContentText>
         <ul>
           <li>{props.primaryEmotion}</li>
           <li>{props.intensityLevel}</li>

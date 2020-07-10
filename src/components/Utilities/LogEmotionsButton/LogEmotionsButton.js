@@ -18,10 +18,10 @@ const LogEmotionsButton = (props) => {
   const [intensityEmotion, setIntensityEmotion] = useState(null);
   // intensity_level - State default 0
   const [intensityLevel, setIntensityLevel] = useState(0);
-  // // how_feel - State default ""
-  const [howFeel, setHowFeel] = useState("");
-  // // why_feel - State default ""
-  const [whyFeel, setWhyFeel] = useState("");
+  // // how_feel - State default null
+  const [howFeel, setHowFeel] = useState(null);
+  // // why_feel - State default null
+  const [whyFeel, setWhyFeel] = useState(null);
 
   const [emotionLog, setEmotionLog] = useState({
     primaryEmotion: null,
@@ -68,6 +68,11 @@ const LogEmotionsButton = (props) => {
     setOpen(false);
     setStage(1);
     setActiveStep(0);
+    setPrimaryEmotion(null);
+    setIntensityEmotion(null);
+    setIntensityLevel(0);
+    setHowFeel(null);
+    setWhyFeel(null);
   };
 
   const renderSwitch = () => {

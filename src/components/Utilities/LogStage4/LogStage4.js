@@ -11,44 +11,19 @@ import {
 } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
-const LogStage3 = (props) => {
-
-  const handleChangeForHow = (e) => {
-    props.setHowFeel(e.target.value);
-  }
-
-  const handleChangeForWhy = (e) => {
-    props.setWhyFeel(e.target.value);
-  };
-
+const LogStage4 = (props) => {
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
-      <DialogTitle id="form-dialog-title">Describe how you feel?</DialogTitle>
+      <DialogTitle id="form-dialog-title">Review Emotional Log</DialogTitle>
       <DialogContent>
-        <TextField
-          id="outlined-multiline-static"
-          label="How"
-          multiline
-          rows={4}
-          variant="outlined"
-          onChange={(event) => handleChangeForHow(event)}
-        />
-        <DialogContentText>{props.howFeel}</DialogContentText>
-      </DialogContent>
-      <DialogTitle id="form-dialog-title">
-        Describe why you are feeling {props.primaryEmotion}?
-      </DialogTitle>
-      <DialogContent>
-        <TextField
-          id="outlined-multiline-static"
-          label="Why"
-          multiline
-          rows={4}
-          variant="outlined"
-          onChange={(event) => handleChangeForWhy(event)}
-        />
-        <DialogContentText>{props.whyFeel}</DialogContentText>
+        <DialogContentText>
+          {props.primaryEmotion}
+          {props.intensityLevel}
+          {props.intensityEmotion}
+          {props.howFeel}
+          {props.whyFeel}
+        </DialogContentText>
       </DialogContent>
       <DialogActions>
         <MobileStepper
@@ -60,10 +35,10 @@ const LogStage3 = (props) => {
           nextButton={
             <Button
               size="small"
-              onClick={props.nextStage}
+              onClick={props.handleClose}
               disabled={props.activeStep === 4}
             >
-              Next
+              Finish
               {props.theme.direction === "rtl" ? (
                 <KeyboardArrowLeft />
               ) : (
@@ -92,4 +67,4 @@ const LogStage3 = (props) => {
   );
 };
 
-export default connect()(LogStage3);
+export default connect()(LogStage4);

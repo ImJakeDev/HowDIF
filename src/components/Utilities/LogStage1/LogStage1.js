@@ -127,7 +127,7 @@ const LogStage1 = (props) => {
       <DialogActions>
         <MobileStepper
           variant="progress"
-          steps={3}
+          steps={4}
           position="static"
           activeStep={props.activeStep}
           className={props.classes.root}
@@ -135,7 +135,7 @@ const LogStage1 = (props) => {
             <Button
               size="small"
               onClick={props.nextStage}
-              disabled={props.activeStep === 2}
+              disabled={props.activeStep === 4}
             >
               Next
               {props.theme.direction === "rtl" ? (

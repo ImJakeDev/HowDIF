@@ -9,6 +9,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import LogStage1 from "../LogStage1/LogStage1";
 import LogStage2 from "../LogStage2/LogStage2";
 import LogStage3 from "../LogStage3/LogStage3";
+import LogStage4 from "../LogStage4/LogStage4";
 
 const LogEmotionsButton = (props) => {
   // ----- Functional State with React useState Hook -----
@@ -111,8 +112,8 @@ const LogEmotionsButton = (props) => {
         return (
           // Need Stage 3 Component
           <LogStage3
-            handleClose={handleClose}
             prevStage={prevStage}
+            nextStage={nextStage}
             activeStep={activeStep}
             classes={classes}
             theme={theme}
@@ -121,6 +122,21 @@ const LogEmotionsButton = (props) => {
             setHowFeel={setHowFeel}
             whyFeel={whyFeel}
             setWhyFeel={setWhyFeel}
+          />
+        );
+      case 4:
+        return (
+          <LogStage4
+            handleClose={handleClose}
+            prevStage={prevStage}
+            activeStep={activeStep}
+            classes={classes}
+            theme={theme}
+            primaryEmotion={primaryEmotion}
+            intensityLevel={intensityLevel}
+            intensityEmotion={intensityEmotion}
+            howFeel={howFeel}
+            whyFeel={whyFeel}
           />
         );
       default:

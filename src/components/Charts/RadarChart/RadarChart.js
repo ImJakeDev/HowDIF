@@ -1,45 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { ResponsiveRadar } from "@nivo/radar";
 import { useHistory } from "react-router-dom";
 import "./RadarChart.css";
 
-function RadarChart() {
-  const [data] = useState([
-    {
-      emotion: "anger",
-      user: 18,
-    },
-    {
-      emotion: "fear",
-      user: 9,
-    },
-    {
-      emotion: "sadness",
-      user: 2,
-    },
-    {
-      emotion: "disgust",
-      user: 8,
-    },
-    {
-      emotion: "surprise",
-      user: 9,
-    },
-    {
-      emotion: "anticipation",
-      user: 3,
-    },
-    {
-      emotion: "trust",
-      user: 7,
-    },
-    {
-      emotion: "joy",
-      user: 8,
-    },
-  ]);
+const RadarChart = (props) => {
 
   const history = useHistory();
+
+  const [data, setData] = useState([]);
+
+  const { emotionalRadar } = props;
+
+  // You should always add elements inside your render scope
+  // to the second array parameter of useEffect to prevent unexpected bugs.
+  useEffect(() => {
+    setData(emotionalRadar);
+  }, [setData, emotionalRadar]);
 
   return (
     <>
@@ -50,11 +27,11 @@ function RadarChart() {
           <div className="boxSize">
             <ResponsiveRadar
               data={data}
-              keys={["user"]}
+              keys={["This many times"]}
               indexBy="emotion"
               maxValue="auto"
               margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
-              curve="linearClosed"
+              curve="cardinalClosed"
               borderWidth={2}
               borderColor={{ from: "color" }}
               gridLevels={5}
@@ -113,4 +90,12 @@ function RadarChart() {
   );
 }
 
-export default RadarChart;
+const mapStateToProps = (state, ownProps) => {
+  console.log("Here is Redux store state:", state); // state
+  console.log("Here is Redux ownProps:", ownProps); // ownProps
+  return {
+    emotionalRadar: state.emotionLog.emotionalRadar,
+  };
+};
+
+export default connect(mapStateToProps)(RadarChart);

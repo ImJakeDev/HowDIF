@@ -9,11 +9,12 @@ import LogEmotionsButton from "../../Utilities/LogEmotionsButton/LogEmotionsButt
 const UserPage = (props) => {
 
   const { dispatch } = props;
-  
+
   // You should always add elements inside your render scope
   // to the second array parameter of useEffect to prevent unexpected bugs.
   useEffect(() => {
     dispatch({ type: "FETCH_PIE_DATA" });
+    dispatch({ type: "FETCH_RADAR_DATA" });
   }, [dispatch]);
 
   return (

@@ -64,34 +64,61 @@ router.get("/pie", rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryValues)
     .then((result) => {
-      result.rows.map(item => {
-        if (item.id === 'anger') {
+      result.rows.map((item) => {
+        if (item.id === "anger") {
           item.color = "#E76F51"; // red
-        }
-        else if (item.id === 'fear') {
+        } else if (item.id === "fear") {
           item.color = "#2A9D8F"; // cooler green
-        }
-        else if (item.id === 'sadness') {
+        } else if (item.id === "sadness") {
           item.color = "#96B2F3"; // blue
-        }
-        else if (item.id === 'disgust') {
+        } else if (item.id === "disgust") {
           item.color = "#FFB0F7"; // pink ??
-        }
-        else if (item.id === 'surprise') {
+        } else if (item.id === "surprise") {
           item.color = "#91EBF3"; // light blue
-        }
-        else if (item.id === 'anticipation') {
+        } else if (item.id === "anticipation") {
           item.color = "#F4A261"; // orange
-        }
-        else if (item.id === 'trust') {
-          item.color = "#98CE00" // lime green
-        }
-        else if (item.id === 'joy') {
+        } else if (item.id === "trust") {
+          item.color = "#98CE00"; // lime green
+        } else if (item.id === "joy") {
           item.color = "#E9C46A"; // yellow
         } else {
-          item.color = "#98838F"
+          item.color = "#98838F";
         }
-      })
+      });
+      console.log(result.rows);
+      res.status(200).send(result.rows);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
+// ----- GET route to /api/emotions/radar -----
+router.get("/radar", rejectUnauthenticated, (req, res) => {
+  if (req.isAuthenticated() === false) {
+    res.sendStatus(403);
+    return;
+  }
+  const user = req.user; // user authenticated
+  console.log(user); // logs user
+  // What do I need?
+  /*
+  {
+      emotion: "emotion's name",
+      "This many times": emotion's number count,
+    }
+  */
+  const queryText = `
+    SELECT "primary_emotion" AS emotion, count("primary_emotion") AS "This many times"
+    FROM "emotion_logged"
+    WHERE "user_id" = $1
+    GROUP BY "primary_emotion";
+  `;
+  const queryValues = [user.id];
+  pool
+    .query(queryText, queryValues)
+    .then((result) => {
       console.log(result.rows);
       res.status(200).send(result.rows);
     })

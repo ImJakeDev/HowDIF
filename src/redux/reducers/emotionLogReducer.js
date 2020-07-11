@@ -54,6 +54,15 @@ const emotionPie = (state = [], action) => {
   }
 };
 
+const emotionalRadar = (state = [], action) => {
+  switch (action.type) {
+    case "SET_EMOTIONAL_RADAR":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   // primaryEmotion,
   // intensityEmotion,
@@ -61,4 +70,5 @@ export default combineReducers({
   // howFeel,
   // whyFeel,
   emotionPie,
+  emotionalRadar,
 });

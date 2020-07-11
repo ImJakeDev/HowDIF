@@ -6,39 +6,17 @@ import "./PieChart.css";
 
 const PieChart = (props) => {
 
-  const [data, setData] = useState([]);
-
   const history = useHistory();
 
-  const { dispatch, emotionPie } = props;
+  const [data, setData] = useState([]);
 
-  console.log(emotionPie);
+  const { emotionPie } = props;
 
   // You should always add elements inside your render scope
   // to the second array parameter of useEffect to prevent unexpected bugs.
-  // useEffect(() => {
-  //   dispatch({ type: "FETCH_PIE_DATA" });
-  //   // setData(emotionPie);
-  // }, [dispatch]).then(setData(emotionPie));
-
-  // useEffect(() => {
-  //   console.log(emotionPie);
-  //   setData(emotionPie);
-  // }, []);
-
   useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: "FETCH_PIE_DATA" });
-      try {
-        setData(emotionPie);
-      } catch (error) {
-        setData(emotionPie);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+    setData(emotionPie);
+  }, [setData, emotionPie]);
 
   return (
     <>

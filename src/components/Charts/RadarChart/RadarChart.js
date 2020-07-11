@@ -3,41 +3,39 @@ import { ResponsiveRadar } from "@nivo/radar";
 import { useHistory } from "react-router-dom";
 import "./RadarChart.css";
 
-// Went alright
-
 function RadarChart() {
   const [data] = useState([
     {
       emotion: "anger",
-      user: 118,
+      user: 18,
     },
     {
       emotion: "fear",
-      user: 109,
+      user: 9,
     },
     {
       emotion: "sadness",
-      user: 20,
+      user: 2,
     },
     {
       emotion: "disgust",
-      user: 88,
+      user: 8,
     },
     {
       emotion: "surprise",
-      user: 98,
+      user: 9,
     },
     {
       emotion: "anticipation",
-      user: 39,
+      user: 3,
     },
     {
       emotion: "trust",
-      user: 79,
+      user: 7,
     },
     {
       emotion: "joy",
-      user: 78,
+      user: 8,
     },
   ]);
 

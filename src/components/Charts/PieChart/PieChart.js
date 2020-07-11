@@ -6,68 +6,41 @@ import "./PieChart.css";
 
 // This one was a bit easier
 
-function PieChart(props) {
+const PieChart = (props) => {
 
-  const { dispatch } = props;
+  const [data, setData] = useState([]);
+
+  const history = useHistory();
+
+  const { dispatch, emotionPie } = props;
+
+  console.log(emotionPie);
 
   // You should always add elements inside your render scope
   // to the second array parameter of useEffect to prevent unexpected bugs.
+  // useEffect(() => {
+  //   dispatch({ type: "FETCH_PIE_DATA" });
+  //   // setData(emotionPie);
+  // }, [dispatch]).then(setData(emotionPie));
+
+  // useEffect(() => {
+  //   console.log(emotionPie);
+  //   setData(emotionPie);
+  // }, []);
+
   useEffect(() => {
-    dispatch({ type: "FETCH_PIE_DATA" });
-  }, [dispatch]);
+    const fetchData = async () => {
+      dispatch({ type: "FETCH_PIE_DATA" });
+      try {
+        setData(emotionPie);
+      } catch (error) {
+        setData(emotionPie);
+      }
+    };
 
-  const [data] = useState([
-    {
-      id: "anger",
-      label: "anger",
-      value: 227,
-      color: "hsl(249, 70%, 50%)",
-    },
-    {
-      id: "fear",
-      label: "fear",
-      value: 313,
-      color: "hsl(228, 70%, 50%)",
-    },
-    {
-      id: "sadness",
-      label: "sadness",
-      value: 491,
-      color: "hsl(316, 70%, 50%)",
-    },
-    {
-      id: "disgust",
-      label: "disgust",
-      value: 297,
-      color: "hsl(204, 70%, 50%)",
-    },
-    {
-      id: "surprise",
-      label: "surprise",
-      value: 374,
-      color: "hsl(158, 70%, 50%)",
-    },
-    {
-      id: "anticipation",
-      label: "anticipation",
-      value: 230,
-      color: "hsl(214, 70%, 50%)",
-    },
-    {
-      id: "trust",
-      label: "trust",
-      value: 884,
-      color: "hsl(219, 70%, 50%)",
-    },
-    {
-      id: "joy",
-      label: "joy",
-      value: 597,
-      color: "hsl(225, 70%, 50%)",
-    },
-  ]);
+    fetchData();
+  }, []);
 
-  const history = useHistory();
 
   return (
     <>
@@ -205,4 +178,12 @@ function PieChart(props) {
   );
 }
 
-export default connect()(PieChart);
+const mapStateToProps = (state, ownProps) => {
+  console.log('Here is Redux store state:', state); // state
+  console.log("Here is Redux ownProps:", ownProps); // ownProps
+  return {
+    emotionPie: state.emotionLog.emotionPie,
+  };
+};
+
+export default connect(mapStateToProps)(PieChart);

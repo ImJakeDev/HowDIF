@@ -54,14 +54,14 @@ const PieChart = (props) => {
               padAngle={0.7}
               cornerRadius={3}
               colors={[
-                "#61cdbb",
-                "#32936F",
-                "#e8c1a0",
-                "#f47560",
-                "#F4E04D",
-                "#587792",
-                "#CBDFBD",
-                "#A53860",
+                "#E76F51",
+                "#2A9D8F",
+                "#96B2F3",
+                "#FFB0F7",
+                "#91EBF3",
+                "#F4A261",
+                "#98CE00",
+                "#E9C46A",
               ]}
               borderWidth={1}
               borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
@@ -107,43 +107,43 @@ const PieChart = (props) => {
                 },
                 {
                   match: {
-                    id: "c",
+                    id: "trust",
                   },
                   id: "dots",
                 },
                 {
                   match: {
-                    id: "go",
+                    id: "anticipation",
                   },
                   id: "dots",
                 },
                 {
                   match: {
-                    id: "python",
+                    id: "surprise",
                   },
                   id: "dots",
                 },
                 {
                   match: {
-                    id: "scala",
+                    id: "disgust",
                   },
                   id: "lines",
                 },
                 {
                   match: {
-                    id: "lisp",
+                    id: "sadness",
                   },
                   id: "lines",
                 },
                 {
                   match: {
-                    id: "elixir",
+                    id: "fear",
                   },
                   id: "lines",
                 },
                 {
                   match: {
-                    id: "javascript",
+                    id: "anger",
                   },
                   id: "lines",
                 },

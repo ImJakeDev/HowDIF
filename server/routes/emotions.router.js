@@ -64,6 +64,35 @@ router.get("/pie", rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryValues)
     .then((result) => {
+      result.rows.map(item => {
+        if (item.id === 'anger') {
+          item.color = "#E76F51"; // red
+        }
+        else if (item.id === 'fear') {
+          item.color = "#2A9D8F"; // cooler green
+        }
+        else if (item.id === 'sadness') {
+          item.color = "#96B2F3"; // blue
+        }
+        else if (item.id === 'disgust') {
+          item.color = "#FFB0F7"; // pink ??
+        }
+        else if (item.id === 'surprise') {
+          item.color = "#91EBF3"; // light blue
+        }
+        else if (item.id === 'anticipation') {
+          item.color = "#F4A261"; // orange
+        }
+        else if (item.id === 'trust') {
+          item.color = "#98CE00" // lime green
+        }
+        else if (item.id === 'joy') {
+          item.color = "#E9C46A"; // yellow
+        } else {
+          item.color = "#98838F"
+        }
+      })
+      console.log(result.rows);
       res.status(200).send(result.rows);
     })
     .catch((error) => {

@@ -4,8 +4,6 @@ import { ResponsivePie } from "@nivo/pie";
 import { useHistory } from "react-router-dom";
 import "./PieChart.css";
 
-// This one was a bit easier
-
 const PieChart = (props) => {
 
   const [data, setData] = useState([]);
@@ -103,7 +101,7 @@ const PieChart = (props) => {
               fill={[
                 {
                   match: {
-                    id: "ruby",
+                    id: "joy",
                   },
                   id: "dots",
                 },

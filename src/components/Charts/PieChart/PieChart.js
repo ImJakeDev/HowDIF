@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { ResponsivePie } from "@nivo/pie";
 import { useHistory } from "react-router-dom";
 import "./PieChart.css";
 
 // This one was a bit easier
 
-function PieChart() {
+function PieChart(props) {
+
+  const { dispatch } = props;
+
+  // You should always add elements inside your render scope
+  // to the second array parameter of useEffect to prevent unexpected bugs.
+  useEffect(() => {
+    dispatch({ type: "FETCH_PIE_DATA" });
+  }, [dispatch]);
+
   const [data] = useState([
     {
       id: "anger",
@@ -195,4 +205,4 @@ function PieChart() {
   );
 }
 
-export default PieChart;
+export default connect()(PieChart);

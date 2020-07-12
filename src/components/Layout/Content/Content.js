@@ -23,6 +23,7 @@ import LoginPage from "../../Pages/LoginPage/LoginPage";
 import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
 import PieChart from "../../Charts/PieChart/PieChart";
 import RadarChart from "../../Charts/RadarChart/RadarChart";
+import CalendarChart from "../../Charts/CalendarChart/CalendarChart";
 
 import "./Content.css";
 
@@ -55,6 +56,7 @@ class Content extends Component {
             <ProtectedRoute exact path="/info" component={InfoPage} />
             <ProtectedRoute exact path="/pie" component={PieChart} />
             <ProtectedRoute exact path="/radar" component={RadarChart} />
+            <ProtectedRoute exact path="/calendar" component={CalendarChart} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

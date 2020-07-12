@@ -39,6 +39,11 @@ const UserPage = (props) => {
               <div>
                 <Link to="/radar">Emotional Radar</Link>
               </div>
+              <br />
+              <br />
+              <div>
+                <Link to="/calendar">Emotions to Date</Link>
+              </div>
             </div>
           )}
         </center>

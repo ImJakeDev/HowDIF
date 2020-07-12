@@ -5,8 +5,7 @@ import { put, takeLatest } from "redux-saga/effects";
 function* addEmotion(action) {
   try {
     const emotionLog = action.payload;
-    const response = yield axios.post("/api/emotions/log", emotionLog);
-    // yield put({ type: "SET_USER", payload: response.data });
+    yield axios.post("/api/emotions/log", emotionLog);
   } catch (error) {
     console.log(error);
   }

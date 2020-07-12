@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../../Utilities/LogOutButton/LogOutButton';
-import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import HelpSharpIcon from "@material-ui/icons/HelpSharp";
 // import './Nav.css';

@@ -1,17 +1,48 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
+import { Button } from "@material-ui/core";
+import {
+  makeStyles,
+  createMuiTheme,
+} from "@material-ui/core/styles";
+// import { ThemeProvider } from "@material-ui/styles";
 
-const LogOutButton = props => (
-  <button
-    // This button shows up in multiple locations and is styled differently
-    // because it's styled differently depending on where it is used, the className
-    // is passed to it from it's parents through React props
-    className={props.className}
-    onClick={() => props.dispatch({ type: 'LOGOUT' })}
-  >
-    Log Out
-  </button>
-);
+// import {grey} from '@material-ui/core/colors';
+
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: {
+//       main: grey[50],
+//     },
+//     secondary: {
+//       main: "#00bcd4",
+//     },
+//   },
+// });
+
+const useStyles = makeStyles((theme) => ({
+  // this group of buttons will be aligned to the right side
+  toolbarButtons: {
+    marginLeft: "auto",
+  },
+}));
+
+const LogOutButton = (props) => {
+  const classes = useStyles();
+  return (
+    // <ThemeProvider theme={theme}>
+    <Button
+      size="medium"
+      variant="outlined"
+      color="secondary"
+      className={classes.toolbarButtons}
+      onClick={() => props.dispatch({ type: "LOGOUT" })}
+    >
+      Log Out
+    </Button>
+    // </ThemeProvider>
+  );
+};
 
 // This component doesn't need 'mapStateToProps'
 // because it doesn't care what the current state is.

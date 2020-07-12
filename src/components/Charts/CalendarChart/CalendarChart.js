@@ -7,7 +7,7 @@ const CalendarChart = (props) => {
   const history = useHistory();
   const [data] = useState([
     {
-      day: "2020-07-13",
+      day: "2020-07-07 16:53:40.283513",
       value: 1,
       emotion: "anger",
     },

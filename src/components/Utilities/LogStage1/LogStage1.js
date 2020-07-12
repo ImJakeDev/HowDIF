@@ -11,6 +11,29 @@ import {
 } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
+import {
+  red,
+  pink,
+  purple,
+  deepPurple,
+  indigo,
+  blue,
+  lightBlue,
+  cyan,
+  teal,
+  green,
+  lightGreen,
+  lime,
+  yellow,
+  amber,
+  orange,
+  deepOrange,
+  brown,
+  grey,
+  blueGrey,
+} from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -24,6 +47,78 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(1),
   },
 }));
+
+const anger = createMuiTheme({
+  palette: {
+    primary: {
+      // anger
+      main: red[500],
+    },
+  },
+});
+
+const fear = createMuiTheme({
+  palette: {
+    primary: {
+      // fear
+      main: lightGreen[500],
+    },
+  },
+});
+
+const sadness = createMuiTheme({
+  palette: {
+    primary: {
+      // sadness
+      main: blue[500],
+    },
+  },
+});
+
+const disgust = createMuiTheme({
+  palette: {
+    primary: {
+      // disgust
+      main: deepPurple[500],
+    },
+  },
+});
+
+const surprise = createMuiTheme({
+  palette: {
+    primary: {
+      // surprise
+      main: green[500],
+    },
+  },
+});
+
+const anticipation = createMuiTheme({
+  palette: {
+    primary: {
+      // anticipation
+      main: orange[500],
+    },
+  },
+});
+
+const trust = createMuiTheme({
+  palette: {
+    primary: {
+      // trust
+      main: lime[500],
+    },
+  },
+});
+
+const joy = createMuiTheme({
+  palette: {
+    primary: {
+      // joy
+      main: yellow[500],
+    },
+  },
+});
 
 const LogStage1 = (props) => {
   const classes = useStyles();
@@ -42,84 +137,109 @@ const LogStage1 = (props) => {
       <DialogContent>
         <Grid container spacing={3}>
           <Grid item xs={3}>
-            <Button
-              onClick={() => handleClickForPrimEmo("anger")}
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              anger
-            </Button>
+            <ThemeProvider theme={anger}>
+              <Button
+                onClick={() => handleClickForPrimEmo("anger")}
+                className={classes.emotionButtons}
+                size="large"
+                variant="contained"
+                color="primary"
+              >
+                anger
+              </Button>
+            </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
-            <Button
-              onClick={() => handleClickForPrimEmo("sadness")}
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              sadness
-            </Button>
+            <ThemeProvider theme={anticipation}>
+              <Button
+                onClick={() => handleClickForPrimEmo("anticipation")}
+                className={classes.emotionButtons}
+                size="large"
+                variant="contained"
+                color="primary"
+              >
+                anticipation
+              </Button>
+            </ThemeProvider>
+          </Grid>
+
+          <Grid item xs={3}>
+            <ThemeProvider theme={joy}>
+              <Button
+                onClick={() => handleClickForPrimEmo("joy")}
+                className={classes.emotionButtons}
+                size="large"
+                variant="contained"
+                color="primary"
+              >
+                joy
+              </Button>
+            </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
-            <Button
-              onClick={() => handleClickForPrimEmo("fear")}
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              fear
-            </Button>
+            <ThemeProvider theme={trust}>
+              <Button
+                onClick={() => handleClickForPrimEmo("trust")}
+                className={classes.emotionButtons}
+                size="large"
+                variant="contained"
+                color="primary"
+              >
+                trust
+              </Button>
+            </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
-            <Button
-              onClick={() => handleClickForPrimEmo("disgust")}
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              disgust
-            </Button>
+            <ThemeProvider theme={fear}>
+              <Button
+                onClick={() => handleClickForPrimEmo("fear")}
+                className={classes.emotionButtons}
+                size="large"
+                variant="contained"
+                color="primary"
+              >
+                fear
+              </Button>
+            </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
-            <Button
-              onClick={() => handleClickForPrimEmo("surprise")}
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              surprise
-            </Button>
+            <ThemeProvider theme={surprise}>
+              <Button
+                onClick={() => handleClickForPrimEmo("surprise")}
+                className={classes.emotionButtons}
+                size="large"
+                variant="contained"
+                color="primary"
+              >
+                surprise
+              </Button>
+            </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
-            <Button
-              onClick={() => handleClickForPrimEmo("anticipation")}
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              anticipation
-            </Button>
+            <ThemeProvider theme={sadness}>
+              <Button
+                onClick={() => handleClickForPrimEmo("sadness")}
+                className={classes.emotionButtons}
+                size="large"
+                variant="contained"
+                color="primary"
+              >
+                sadness
+              </Button>
+            </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
-            <Button
-              onClick={() => handleClickForPrimEmo("trust")}
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              trust
-            </Button>
-          </Grid>
-          <Grid item xs={3}>
-            <Button
-              onClick={() => handleClickForPrimEmo("joy")}
-              className={classes.emotionButtons}
-              variant="contained"
-              color="primary"
-            >
-              joy
-            </Button>
+            <ThemeProvider theme={disgust}>
+              <Button
+                onClick={() => handleClickForPrimEmo("disgust")}
+                className={classes.emotionButtons}
+                size="large"
+                variant="contained"
+                color="primary"
+              >
+                disgust
+              </Button>
+            </ThemeProvider>
           </Grid>
         </Grid>
         <DialogContentText>{props.primaryEmotion}</DialogContentText>

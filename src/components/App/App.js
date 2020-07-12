@@ -29,7 +29,36 @@ import {
   blueGrey,
 } from "@material-ui/core/colors";
 
-const theme = createMuiTheme({
+// const emotionsColorTheme = createMuiTheme({
+//   palette: {
+//     anger: {
+//       main: red[500],
+//     },
+//     fear: {
+//       main: teal[500],
+//     },
+//     sadness: {
+//       main: blue[500],
+//     },
+//     disgust: {
+//       main: pink[500],
+//     },
+//     surprise: {
+//       main: lightBlue[500],
+//     },
+//     anticipation: {
+//       main: orange[500],
+//     },
+//     trust: {
+//       main: lime[500],
+//     },
+//     joy: {
+//       main: yellow[500],
+//     },
+//   },
+// });
+
+const mainTheme = createMuiTheme({
   palette: {
     primary: {
       main: teal[300],
@@ -37,37 +66,57 @@ const theme = createMuiTheme({
     secondary: {
       main: grey[50],
     },
-    anger: {
+  },
+});
+
+const theme1 = createMuiTheme({
+  palette: {
+    primary: {
+      // anger
       main: red[500],
     },
-    fear: {
+    secondary: {
+      // fear
       main: teal[500],
     },
-    sadness: {
+    error: {
+      // sadness
       main: blue[500],
     },
-    disgust: {
+    warning: {
+      // disgust
       main: pink[500],
     },
-    surprise: {
+    info: {
+      // surprise
       main: lightBlue[500],
     },
-    anticipation: {
+    success: {
+      // anticipation
       main: orange[500],
-    },
-    trust: {
-      main: lime[500],
-    },
-    joy: {
-      main: yellow[500],
     },
   },
 });
 
+const theme2 = createMuiTheme({
+  palette: {
+    primary: {
+      // trust
+      main: red[500],
+    },
+    secondary: {
+      // joy
+      main: teal[500],
+    },
+  },
+});
+
+
+
 const App = () => {
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={mainTheme}>
         <CssBaseline />
         <Content />
       </ThemeProvider>

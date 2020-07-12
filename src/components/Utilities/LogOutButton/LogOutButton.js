@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Button } from "@material-ui/core";
 import {
   makeStyles,
-  createMuiTheme,
 } from "@material-ui/core/styles";
 // import { ThemeProvider } from "@material-ui/styles";
 
@@ -20,7 +19,7 @@ import {
 //   },
 // });
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   // this group of buttons will be aligned to the right side
   toolbarButtons: {
     marginLeft: "auto",

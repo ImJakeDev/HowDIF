@@ -15,6 +15,7 @@ const UserPage = (props) => {
   useEffect(() => {
     dispatch({ type: "FETCH_PIE_DATA" });
     dispatch({ type: "FETCH_RADAR_DATA" });
+    dispatch({ type: "FETCH_CALENDAR_DATA" });
   }, [dispatch]);
 
   return (

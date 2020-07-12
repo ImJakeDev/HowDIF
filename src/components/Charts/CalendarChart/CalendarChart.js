@@ -1,63 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { ResponsiveCalendar } from "@nivo/calendar";
 import { useHistory } from "react-router-dom";
 import "./CalendarChart.css";
 
 const CalendarChart = (props) => {
   const history = useHistory();
-  const [data] = useState([
-    {
-      day: "2020-07-07 16:53:40.283513",
-      value: 1,
-      emotion: "anger",
-    },
-    {
-      day: "2020-01-05",
-      value: 2,
-      emotion: "fear",
-    },
-    {
-      day: "2020-06-05",
-      value: 3,
-      emotion: "sadness",
-    },
-    {
-      day: "2020-04-21",
-      value: 4,
-      emotion: "disgust",
-    },
-    {
-      day: "2020-06-28",
-      value: 5,
-      emotion: "surprise",
-    },
-    {
-      day: "2020-07-11",
-      value: 6,
-      emotion: "anticipation",
-    },
-    {
-      day: "2020-07-15",
-      value: 7,
-      emotion: "trust",
-    },
-    {
-      day: "2020-10-31",
-      value: 8,
-      emotion: "joy",
-    },
-  ]);
+
+  const [data, setData] = useState([]);
+
+  const { emotionsToDate } = props;
+
+  // You should always add elements inside your render scope
+  // to the second array parameter of useEffect to prevent unexpected bugs.
+  useEffect(() => {
+    setData(emotionsToDate);
+  }, [setData, emotionsToDate]);
+
 
   return (
     <>
       <div>
         <center>
-          <h1>Emotional Radar</h1>
+          <h1>Emotions to Date</h1>
           <button onClick={() => history.push("/home")}>Back</button>
           <div className="boxSize">
             <ResponsiveCalendar
               data={data}
-              from="2020-01-01"
+              from="2020-01-01" // Will have to turn these into a function some how...
               to="2021-01-01"
               emptyColor="#eeeeee"
               colors={[
@@ -99,4 +69,12 @@ const CalendarChart = (props) => {
   );
 };
 
-export default CalendarChart;
+const mapStateToProps = (state, ownProps) => {
+  console.log("Here is Redux store state:", state); // state
+  console.log("Here is Redux ownProps:", ownProps); // ownProps
+  return {
+    emotionsToDate: state.emotionLog.emotionsToDate,
+  };
+};
+
+export default connect(mapStateToProps)(CalendarChart);

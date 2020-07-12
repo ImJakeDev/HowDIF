@@ -32,10 +32,21 @@ function* fetchRadarData() {
   }
 }
 
+// worker Saga: will be fired on "FETCH_RADAR_DATA" actions
+function* fetchCalendarData() {
+  try {
+    const response = yield axios.get("/api/emotions/calendar");
+    yield put({ type: "SET_EMOTIONS_TO_DATE", payload: response.data });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* emotionsSaga() {
   yield takeLatest("ADD_EMOTION_LOG", addEmotion);
   yield takeLatest("FETCH_PIE_DATA", fetchPieData);
   yield takeLatest("FETCH_RADAR_DATA", fetchRadarData);
+  yield takeLatest("FETCH_CALENDAR_DATA", fetchCalendarData);
 }
 
 export default emotionsSaga;

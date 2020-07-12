@@ -5,6 +5,8 @@ const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 
+const moment = require("moment");
+
 // ----- POST route to /api/emotions/log -----
 router.post("/log", rejectUnauthenticated, (req, res) => {
   if (req.isAuthenticated() === false) {
@@ -119,6 +121,64 @@ router.get("/radar", rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryValues)
     .then((result) => {
+      console.log(result.rows);
+      res.status(200).send(result.rows);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
+// ----- GET route to /api/emotions/calendar -----
+router.get("/calendar", rejectUnauthenticated, (req, res) => {
+  if (req.isAuthenticated() === false) {
+    res.sendStatus(403);
+    return;
+  }
+  const user = req.user; // user authenticated
+  console.log(user); // logs user
+  // What do I need?
+  /*
+  {
+      day: "YYYY-MM-DD",
+      value: A number value that represents the emotion,
+    }
+  */
+  const queryText = `
+    SELECT "date" AS day, "primary_emotion" AS value
+    FROM "emotion_logged"
+    WHERE "user_id" = $1
+    ORDER BY "date";
+  `;
+  const queryValues = [user.id];
+  pool
+    .query(queryText, queryValues)
+    .then((result) => {
+      result.rows.map((item) => {
+        if (moment(item.day) !== moment(item.day).format("YYYY-MM-DD")) {
+          item.day = moment(item.day).format("YYYY-MM-DD");
+        }
+        if (item.value === "anger") {
+          item.value = 1;
+        } else if (item.value === "fear") {
+          item.value = 2;
+        } else if (item.value === "sadness") {
+          item.value = 3;
+        } else if (item.value === "disgust") {
+          item.value = 4;
+        } else if (item.value === "surprise") {
+          item.value = 5;
+        } else if (item.value === "anticipation") {
+          item.value = 6;
+        } else if (item.value === "trust") {
+          item.value = 7;
+        } else if (item.value === "joy") {
+          item.value = 8;
+        } else {
+          item.value = 0;
+        }
+      });
       console.log(result.rows);
       res.status(200).send(result.rows);
     })

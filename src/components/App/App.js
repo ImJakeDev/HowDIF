@@ -6,7 +6,28 @@ import { ThemeProvider } from "@material-ui/styles";
 // Components
 import Content from "../Layout/Content/Content";
 
-import { teal, grey } from "@material-ui/core/colors";
+// https://material-ui.com/customization/color/#color
+import {
+  red,
+  pink,
+  purple,
+  deepPurple,
+  indigo,
+  blue,
+  lightBlue,
+  cyan,
+  teal,
+  green,
+  lightGreen,
+  lime,
+  yellow,
+  amber,
+  orange,
+  deepOrange,
+  brown,
+  grey,
+  blueGrey,
+} from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
   palette: {
@@ -15,6 +36,30 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: grey[50],
+    },
+    anger: {
+      main: red[500],
+    },
+    fear: {
+      main: teal[500],
+    },
+    sadness: {
+      main: blue[500],
+    },
+    disgust: {
+      main: pink[500],
+    },
+    surprise: {
+      main: lightBlue[500],
+    },
+    anticipation: {
+      main: orange[500],
+    },
+    trust: {
+      main: lime[500],
+    },
+    joy: {
+      main: yellow[500],
     },
   },
 });

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // React Router DOM
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class LoginPage extends Component {
   state = {
@@ -23,6 +24,7 @@ class LoginPage extends Component {
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
+    this.props.history.push("/home");
   } // end login
 
   handleInputChangeFor = propertyName => (event) => {
@@ -97,4 +99,4 @@ const mapStateToProps = state => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps)(withRouter(LoginPage));

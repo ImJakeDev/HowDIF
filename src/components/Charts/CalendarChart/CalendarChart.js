@@ -18,6 +18,21 @@ const CalendarChart = (props) => {
   }, [setData, emotionsToDate]);
 
 
+  // If data is undefined it errors out
+  const startDate = () => {
+    const start = emotionsToDate[0].day;
+    console.log('This is the start date', start);
+    return start;
+  }
+
+  // If data is undefined it errors out
+  const endDate = () => {
+    const date = emotionsToDate.length - 1;
+    const end = emotionsToDate[date].day;
+    console.log("This is the end date", end);
+    return end;
+  };
+
   return (
     <>
       <div>
@@ -27,8 +42,8 @@ const CalendarChart = (props) => {
           <div className="boxSize">
             <ResponsiveCalendar
               data={data}
-              from="2020-01-01" // Will have to turn these into a function some how...
-              to="2021-01-01"
+              from={startDate()} // Will have to turn these into a function some how...
+              to={endDate()}
               emptyColor="#eeeeee"
               colors={[
                 "#61cdbb",

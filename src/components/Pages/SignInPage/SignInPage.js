@@ -142,7 +142,7 @@ const SignInPage = (props) => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/register">
+                <Link to="/signup">
                   <Typography
                     variant="body2"
                     onClick={() => {

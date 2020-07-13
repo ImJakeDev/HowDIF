@@ -35,20 +35,20 @@ const mainTheme = createMuiTheme({
       main: teal[300],
     },
     secondary: {
-      main: grey[50],
+      main: grey[300],
     },
-    error: {
-      main: blue[500],
-    },
-    warning: {
-      main: pink[500],
-    },
-    info: {
-      main: lightBlue[500],
-    },
-    success: {
-      main: orange[500],
-    },
+    // error: {
+    //   main: blue[500],
+    // },
+    // warning: {
+    //   main: pink[500],
+    // },
+    // info: {
+    //   main: lightBlue[500],
+    // },
+    // success: {
+    //   main: orange[500],
+    // },
   },
 });
 

@@ -2,7 +2,14 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import LogEmotionsButton from "../../Utilities/LogEmotionsButton/LogEmotionsButton";
-import { Box, Button, Container, Grid, Paper } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Paper,
+  Typography,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import TrackChangesIcon from "@material-ui/icons/TrackChanges";
@@ -12,9 +19,16 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: "100vh",
+    overflow: "auto",
+    margin: "auto",
+  },
   box: {
     display: "flex",
-    flexDirection: "row", 
+    flexDirection: "row",
   },
   button: {
     marginLeft: "auto",
@@ -28,10 +42,22 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "auto",
   },
   paper: {
+    maxWidth: "90vh",
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
     flexDirection: "column",
+  },
+  logbox: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignContent: "center",
+    textAlign: "center",
+    margin: "1vh",
+  },
+  marginBottom: {
+    marginBottom: "1em",
   },
 }));
 
@@ -52,18 +78,28 @@ const UserPage = (props) => {
   }, [dispatch]);
 
   return (
-    <div>
-      <div>
-        <center>
-          <h2>How do you feel, {props.user.username}?</h2>
-          <br />
-          <LogEmotionsButton />
-          <br />
-        </center>
+    <div className={classes.root}>
+      <Container maxWidth="lg">
         <main className={classes.content}>
+          <div className={classes.appBarSpacer}>
+            <Container maxWidth="sm" className={classes.container}>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <Paper className={classes.paper}>
+                    <Box className={classes.logbox}>
+                      <Typography variant="h4" className={classes.marginBottom}>
+                        How do you feel, {props.user.username}?
+                      </Typography>
+                      <LogEmotionsButton />
+                    </Box>
+                  </Paper>
+                </Grid>
+              </Grid>
+            </Container>
+          </div>
           {props.user.id && (
             <div className={classes.appBarSpacer}>
-              <Container maxWidth="lg" className={classes.container}>
+              <Container maxWidth="sm" className={classes.container}>
                 <Grid container spacing={3}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper}>
@@ -109,7 +145,7 @@ const UserPage = (props) => {
             </div>
           )}
         </main>
-      </div>
+      </Container>
     </div>
   );
 };

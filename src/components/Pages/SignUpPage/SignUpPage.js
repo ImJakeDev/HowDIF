@@ -133,7 +133,7 @@ const SignUpPage = (props) => {
             </Button>
             <Grid container>
               <Grid item>
-                <Link to="/login">
+                <Link to="signin">
                   <Typography
                     variant="body2"
                     onClick={() => {

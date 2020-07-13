@@ -1,15 +1,43 @@
 import React from 'react';
-import './Footer.css'
+import { AppBar, Box, Link, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+// import './Footer.css'
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="#">
+        HowDIF
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 
-const Footer = () => (
-  <footer>
-    &copy; HowDIF
-  </footer>
-);
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+  },
+}));
+
+const Footer = () => {
+  const classes = useStyles();
+  return (
+    <footer>
+      <AppBar
+        position="static"
+        color="default"
+        elevation={0}
+        className={classes.appBar}
+      >
+        <Box mt={5}>
+          <Copyright />
+        </Box>
+      </AppBar>
+    </footer>
+  );
+}
 
 export default Footer;

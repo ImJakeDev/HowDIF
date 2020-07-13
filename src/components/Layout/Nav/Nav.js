@@ -26,7 +26,7 @@ const Nav = (props) => {
       {/* <div className="nav"> */}
       <AppBar position="relative">
         <Toolbar>
-          <HelpSharpIcon className={classes.icon} />
+          <HelpSharpIcon color="secondary" className={classes.icon} />
           <Link to="/home" className={classes.toolbarTitle}>
             HowDIF
           </Link>

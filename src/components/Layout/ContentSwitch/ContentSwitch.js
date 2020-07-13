@@ -18,6 +18,7 @@ import UserPage from "../../Pages/UserPage/UserPage";
 // import InfoPage from "../../Pages/InfoPage/InfoPage";
 import LoginPage from "../../Pages/LoginPage/LoginPage";
 import SignInPage from "../../Pages/SignInPage/SignInPage";
+import SignUpPage from "../../Pages/SignUpPage/SignUpPage";
 import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
 
 import PieChart from "../../Charts/PieChart/PieChart";
@@ -41,6 +42,7 @@ class Content extends Component {
           {/* <Route exact path="/about" component={AboutPage} /> */}
           <Route exact path="/landing" component={LandingPage} />
           <Route exact path="/signin" component={SignInPage} />
+          <Route exact path="/signup" component={SignUpPage} />
           {/* <Route exact path="/login" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage} /> */}
           {/* For protected routes, the view could show one of several things on the same route.

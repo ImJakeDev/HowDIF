@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     borderTop: `1px solid ${theme.palette.divider}`,
   },
+  copyright: {
+    marginBottom: "10vh",
+  },
 }));
 
 const Footer = () => {
@@ -32,7 +35,7 @@ const Footer = () => {
         elevation={0}
         className={classes.appBar}
       >
-        <Box mt={5}>
+        <Box mt={5} className={classes.copyright}>
           <Copyright />
         </Box>
       </AppBar>

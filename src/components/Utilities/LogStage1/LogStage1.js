@@ -8,9 +8,11 @@ import {
   DialogTitle,
   Grid,
   MobileStepper,
+  Tooltip,
+  Typography,
 } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import {
@@ -23,6 +25,16 @@ import {
   yellow,
   orange,
 } from "@material-ui/core/colors";
+
+const HtmlTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "#f5f5f9",
+    color: "rgba(0, 0, 0, 0.87)",
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: "1px solid #dadde9",
+  },
+}))(Tooltip);
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -127,107 +139,224 @@ const LogStage1 = (props) => {
         <Grid container spacing={3}>
           <Grid item xs={3}>
             <ThemeProvider theme={anger}>
-              <Button
-                onClick={() => handleClickForPrimEmo("anger")}
-                className={classes.emotionButtons}
-                size="large"
-                variant="contained"
-                color="primary"
+              <HtmlTooltip
+                arrow
+                placement="top"
+                title={
+                  <React.Fragment>
+                    <Typography color="inherit" variant="body2">
+                      <b>Anger</b>
+                      {
+                        " is an intense emotional state involving a strong uncomfortable and hostile response to a perceived provocation, hurt or threat."
+                      }
+                    </Typography>
+                  </React.Fragment>
+                }
               >
-                anger
-              </Button>
+                <Button
+                  onClick={() => handleClickForPrimEmo("anger")}
+                  className={classes.emotionButtons}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  anger
+                </Button>
+              </HtmlTooltip>
             </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
             <ThemeProvider theme={anticipation}>
-              <Button
-                onClick={() => handleClickForPrimEmo("anticipation")}
-                className={classes.emotionButtons}
-                size="large"
-                variant="contained"
-                color="primary"
+              <HtmlTooltip
+                arrow
+                placement="top"
+                title={
+                  <React.Fragment>
+                    <Typography color="inherit" variant="body2">
+                      <b>Anticipation</b>
+                      {
+                        " is an emotion involving pleasure, or anxiety in considering or awaiting an expected event."
+                      }
+                    </Typography>
+                  </React.Fragment>
+                }
               >
-                anticipation
-              </Button>
+                <Button
+                  onClick={() => handleClickForPrimEmo("anticipation")}
+                  className={classes.emotionButtons}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  anticipation
+                </Button>
+              </HtmlTooltip>
             </ThemeProvider>
           </Grid>
-
           <Grid item xs={3}>
             <ThemeProvider theme={joy}>
-              <Button
-                onClick={() => handleClickForPrimEmo("joy")}
-                className={classes.emotionButtons}
-                size="large"
-                variant="contained"
-                color="primary"
+              <HtmlTooltip
+                arrow
+                placement="top"
+                title={
+                  <React.Fragment>
+                    <Typography color="inherit" variant="body2">
+                      <b>Joy</b>
+                      {" is a feeling of great pleasure and happiness."}
+                    </Typography>
+                  </React.Fragment>
+                }
               >
-                joy
-              </Button>
+                <Button
+                  onClick={() => handleClickForPrimEmo("joy")}
+                  className={classes.emotionButtons}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  joy
+                </Button>
+              </HtmlTooltip>
             </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
             <ThemeProvider theme={trust}>
-              <Button
-                onClick={() => handleClickForPrimEmo("trust")}
-                className={classes.emotionButtons}
-                size="large"
-                variant="contained"
-                color="primary"
+              <HtmlTooltip
+                arrow
+                placement="top"
+                title={
+                  <React.Fragment>
+                    <Typography color="inherit" variant="body2">
+                      <b>Trust</b>
+                      {
+                        " is an abstract mental attitude toward a proposition that someone or something is dependable."
+                      }
+                    </Typography>
+                  </React.Fragment>
+                }
               >
-                trust
-              </Button>
+                <Button
+                  onClick={() => handleClickForPrimEmo("trust")}
+                  className={classes.emotionButtons}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  trust
+                </Button>
+              </HtmlTooltip>
             </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
             <ThemeProvider theme={fear}>
-              <Button
-                onClick={() => handleClickForPrimEmo("fear")}
-                className={classes.emotionButtons}
-                size="large"
-                variant="contained"
-                color="primary"
+              <HtmlTooltip
+                arrow
+                placement="top"
+                title={
+                  <React.Fragment>
+                    <Typography color="inherit" variant="body2">
+                      <b>Fear</b>
+                      {
+                        " is an unpleasant feeling triggered by the perception of danger, real or imagined."
+                      }
+                    </Typography>
+                  </React.Fragment>
+                }
               >
-                fear
-              </Button>
+                <Button
+                  onClick={() => handleClickForPrimEmo("fear")}
+                  className={classes.emotionButtons}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  fear
+                </Button>
+              </HtmlTooltip>
             </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
             <ThemeProvider theme={surprise}>
-              <Button
-                onClick={() => handleClickForPrimEmo("surprise")}
-                className={classes.emotionButtons}
-                size="large"
-                variant="contained"
-                color="primary"
+              <HtmlTooltip
+                arrow
+                placement="top"
+                title={
+                  <React.Fragment>
+                    <Typography color="inherit" variant="body2">
+                      <b>Surprise</b>
+                      {
+                        " is a brief mental and physiological state, a startle response experienced by animals and humans as the result of an unexpected event."
+                      }
+                    </Typography>
+                  </React.Fragment>
+                }
               >
-                surprise
-              </Button>
+                <Button
+                  onClick={() => handleClickForPrimEmo("surprise")}
+                  className={classes.emotionButtons}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  surprise
+                </Button>
+              </HtmlTooltip>
             </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
             <ThemeProvider theme={sadness}>
-              <Button
-                onClick={() => handleClickForPrimEmo("sadness")}
-                className={classes.emotionButtons}
-                size="large"
-                variant="contained"
-                color="primary"
+              <HtmlTooltip
+                arrow
+                placement="top"
+                title={
+                  <React.Fragment>
+                    <Typography color="inherit" variant="body2">
+                      <b>Sadness</b>
+                      {
+                        " is an emotional pain associated with, or characterized by, feelings of disadvantage, loss, despair, grief, helplessness, disappointment and sorrow."
+                      }
+                    </Typography>
+                  </React.Fragment>
+                }
               >
-                sadness
-              </Button>
+                <Button
+                  onClick={() => handleClickForPrimEmo("sadness")}
+                  className={classes.emotionButtons}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  sadness
+                </Button>
+              </HtmlTooltip>
             </ThemeProvider>
           </Grid>
           <Grid item xs={3}>
             <ThemeProvider theme={disgust}>
-              <Button
-                onClick={() => handleClickForPrimEmo("disgust")}
-                className={classes.emotionButtons}
-                size="large"
-                variant="contained"
-                color="primary"
+              <HtmlTooltip
+                arrow
+                placement="top"
+                title={
+                  <React.Fragment>
+                    <Typography color="inherit" variant="body2">
+                      <b>Disgust</b>
+                      {
+                        " is an emotional response of rejection or revulsion to something potentially contagious or something considered offensive, distasteful, or unpleasant."
+                      }
+                    </Typography>
+                  </React.Fragment>
+                }
               >
-                disgust
-              </Button>
+                <Button
+                  onClick={() => handleClickForPrimEmo("disgust")}
+                  className={classes.emotionButtons}
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                >
+                  disgust
+                </Button>
+              </HtmlTooltip>
             </ThemeProvider>
           </Grid>
         </Grid>

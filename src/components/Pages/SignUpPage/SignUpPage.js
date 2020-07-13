@@ -15,12 +15,14 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import HomePageContent from "../HomePageContent/HomePageContent";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
   },
   image: {
-    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundImage: "url(https://source.unsplash.com/random/?emotions)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -88,6 +90,7 @@ const SignUpPage = (props) => {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
+          <HomePageContent />
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>

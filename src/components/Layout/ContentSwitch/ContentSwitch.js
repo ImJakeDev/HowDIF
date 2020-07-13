@@ -12,10 +12,9 @@ import { connect } from "react-redux";
 // Protected Components
 import ProtectedRoute from "../../Utilities/ProtectedRoute/ProtectedRoute";
 // Component Pages
-import LandingPage from "../../Pages/LandingPage/LandingPage";
+import HomePageContent from "../../Pages/HomePageContent/HomePageContent";
 // import AboutPage from "../../Pages/AboutPage/AboutPage";
 import UserPage from "../../Pages/UserPage/UserPage";
-// import InfoPage from "../../Pages/InfoPage/InfoPage";
 import LoginPage from "../../Pages/LoginPage/LoginPage";
 import SignInPage from "../../Pages/SignInPage/SignInPage";
 import SignUpPage from "../../Pages/SignUpPage/SignUpPage";
@@ -40,7 +39,7 @@ class Content extends Component {
           {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
           {/* <Route exact path="/about" component={AboutPage} /> */}
-          <Route exact path="/landing" component={LandingPage} />
+          <Route exact path="/landing" component={HomePageContent} />
           <Route exact path="/signin" component={SignInPage} />
           <Route exact path="/signup" component={SignUpPage} />
           {/* <Route exact path="/login" component={LoginPage} />

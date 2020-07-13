@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import {
-  Button,
-  Dialog,
-} from "@material-ui/core";
+import { Button, Dialog, Slide } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import LogStage1 from "../LogStage1/LogStage1";
 import LogStage2 from "../LogStage2/LogStage2";
 import LogStage3 from "../LogStage3/LogStage3";
 import LogStage4 from "../LogStage4/LogStage4";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const LogEmotionsButton = (props) => {
   // ----- Functional State with React useState Hook -----
@@ -157,6 +158,8 @@ const LogEmotionsButton = (props) => {
       <Dialog
         open={open}
         onClose={handleClose}
+        TransitionComponent={Transition}
+        keepMounted
         aria-labelledby="form-dialog-title"
       >
         {/* ----- This is the start of the Dialog Area ----- */}

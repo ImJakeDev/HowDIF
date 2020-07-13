@@ -83,6 +83,7 @@ const LogStage3 = (props) => {
           multiline
           rows={4}
           variant="outlined"
+          fullWidth
           onChange={(event) => handleChangeForHow(event)}
         />
         <DialogContentText>{props.howFeel}</DialogContentText>
@@ -97,6 +98,7 @@ const LogStage3 = (props) => {
           multiline
           rows={4}
           variant="outlined"
+          fullWidth
           onChange={(event) => handleChangeForWhy(event)}
         />
         <DialogContentText>{props.whyFeel}</DialogContentText>

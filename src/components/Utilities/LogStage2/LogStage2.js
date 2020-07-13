@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import {
   Button,
   DialogContentText,
+  Grid,
   MobileStepper,
   Slider,
   Typography,
@@ -17,10 +18,14 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 300,
+    minWidth: "45vh",
+    marginTop: "4vh",
   },
   margin: {
     height: theme.spacing(3),
+  },
+  rightAlign: {
+    textAlign: "right",
   },
 }));
 
@@ -130,7 +135,6 @@ const LogStage2 = (props) => {
 
   const classes = useStyles();
 
-
   const renderNotStrongEmotion = () => {
     switch (emotion) {
       case "anger":
@@ -187,13 +191,22 @@ const LogStage2 = (props) => {
 
   const intensityEmotionOptions = (numValue) => {
     if (numValue > 0) {
-      return props.setIntensityEmotion(renderStrongEmotion);
+      return props.setIntensityEmotion(renderStrongEmotion());
     } else if (numValue < 0) {
-      return props.setIntensityEmotion(renderNotStrongEmotion);
+      return props.setIntensityEmotion(renderNotStrongEmotion());
     } else {
       return props.setIntensityEmotion(props.primaryEmotion);
     }
   };
+
+  // You should always add elements inside your render scope
+  // to the second array parameter of useEffect to prevent unexpected bugs.
+  useEffect(() => {
+    setEmotion(props.primaryEmotion);
+    setNumValue(numValue);
+    props.setIntensityLevel(numValue);
+    intensityEmotionOptions(numValue);
+  }, [setEmotion, setNumValue, intensityEmotionOptions]);
 
   return (
     <div>
@@ -203,25 +216,37 @@ const LogStage2 = (props) => {
       </DialogTitle>
       <DialogContent dividers>
         <div className={classes.root}>
-          <Typography id="discrete-slider-custom" gutterBottom>
-            {renderNotStrongEmotion()}
-          </Typography>
-          <Typography id="discrete-slider-custom" gutterBottom>
-            {renderStrongEmotion()}
-          </Typography>
-          <Slider
-            value={numValue}
-            onChange={handleChangeForInLvl}
-            track={false}
-            defaultValue={numValue}
-            getAriaValueText={valueText}
-            aria-labelledby="track-false-slider"
-            step={1}
-            min={-5}
-            max={5}
-            valueLabelDisplay="auto"
-            marks={marks}
-          />
+          <Grid container spacing={2}>
+            <Grid item xs={3}>
+              <Typography
+                id="discrete-slider-custom"
+                className={classes.rightAlign}
+                gutterBottom
+              >
+                {renderNotStrongEmotion()}
+              </Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Slider
+                value={numValue}
+                onChange={handleChangeForInLvl}
+                track={false}
+                defaultValue={numValue}
+                getAriaValueText={valueText}
+                aria-labelledby="track-false-slider"
+                step={1}
+                min={-5}
+                max={5}
+                valueLabelDisplay="auto"
+                marks={marks}
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <Typography id="discrete-slider-custom" gutterBottom>
+                {renderStrongEmotion()}
+              </Typography>
+            </Grid>
+          </Grid>
         </div>
         <DialogContentText>{props.intensityLevel}</DialogContentText>
         <DialogContentText>{props.intensityEmotion}</DialogContentText>

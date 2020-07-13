@@ -2,13 +2,63 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   Button,
-  DialogActions,
-  DialogContent,
   DialogContentText,
-  DialogTitle,
+  TextField,
   MobileStepper,
+  Typography,
 } from "@material-ui/core";
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
+import MuiDialogContent from "@material-ui/core/DialogContent";
+import MuiDialogActions from "@material-ui/core/DialogActions";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = (theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2),
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
+  },
+});
+
+const DialogTitle = withStyles(styles)((props) => {
+  const { children, classes, onClose, ...other } = props;
+  return (
+    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+      <Typography variant="h6">{children}</Typography>
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={onClose}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </MuiDialogTitle>
+  );
+});
+
+const DialogContent = withStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2),
+    minHeight: "40vh",
+  },
+}))(MuiDialogContent);
+
+const DialogActions = withStyles((theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(1),
+  },
+}))(MuiDialogActions);
 
 const LogStage4 = (props) => {
   
@@ -36,9 +86,11 @@ const LogStage4 = (props) => {
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
-      <DialogTitle id="form-dialog-title">Review Emotional Log</DialogTitle>
-      <DialogContent>
-        <DialogContentText>Here is you log:</DialogContentText>
+      <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
+        Review Emotional Log
+      </DialogTitle>
+      <DialogContent dividers>
+        <DialogContentText>Here is your log:</DialogContentText>
         <ul>
           <li>{props.primaryEmotion}</li>
           <li>{props.intensityLevel}</li>

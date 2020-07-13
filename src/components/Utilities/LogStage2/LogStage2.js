@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   Button,
-  DialogActions,
-  DialogContent,
   DialogContentText,
-  DialogTitle,
   MobileStepper,
   Slider,
   Typography,
 } from "@material-ui/core";
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
+import MuiDialogContent from "@material-ui/core/DialogContent";
+import MuiDialogActions from "@material-ui/core/DialogActions";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,6 +75,51 @@ function valueText(value) {
   const newVal = value;
   return newVal;
 }
+
+const styles = (theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2),
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
+  },
+});
+
+const DialogTitle = withStyles(styles)((props) => {
+  const { children, classes, onClose, ...other } = props;
+  return (
+    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+      <Typography variant="h6">{children}</Typography>
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={onClose}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </MuiDialogTitle>
+  );
+});
+
+const DialogContent = withStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2),
+    minHeight: "40vh",
+  },
+}))(MuiDialogContent);
+
+const DialogActions = withStyles((theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(1),
+  },
+}))(MuiDialogActions);
 
 const LogStage2 = (props) => {
   // I got some bugs in here with intensityEmotion
@@ -151,10 +198,10 @@ const LogStage2 = (props) => {
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
-      <DialogTitle id="form-dialog-title">
+      <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
         How intense are you feeling {props.primaryEmotion}?
       </DialogTitle>
-      <DialogContent>
+      <DialogContent dividers>
         <div className={classes.root}>
           <Typography id="discrete-slider-custom" gutterBottom>
             {renderNotStrongEmotion()}

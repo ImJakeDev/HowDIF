@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Button, Dialog, Slide } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import LogStage1 from "../LogStage1/LogStage1";
 import LogStage2 from "../LogStage2/LogStage2";
 import LogStage3 from "../LogStage3/LogStage3";
@@ -25,14 +25,6 @@ const LogEmotionsButton = (props) => {
   // // why_feel - State default null
   const [whyFeel, setWhyFeel] = useState(null);
 
-  // const [emotionLog, setEmotionLog] = useState({
-  //   primaryEmotion: null,
-  //   intensityEmotion: null,
-  //   intensityLevel: 0,
-  //   howFeel: null,
-  //   whyFeel: null,
-  // })
-
   // Stage state which will render the correct stage of the process of the emotion log
   // default is Stage 1 - Will begin at Stage 1
   const [stage, setStage] = useState(1);
@@ -43,9 +35,11 @@ const LogEmotionsButton = (props) => {
 
   const theme = useTheme();
 
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   const useStyles = makeStyles({
     root: {
-      maxWidth: 600,
+      minWidth: "85vh",
       flexGrow: 1,
     },
   });
@@ -101,6 +95,7 @@ const LogEmotionsButton = (props) => {
       case 2:
         return (
           <LogStage2
+            handleClose={handleClose}
             prevStage={prevStage}
             nextStage={nextStage}
             activeStep={activeStep}
@@ -116,6 +111,7 @@ const LogEmotionsButton = (props) => {
       case 3:
         return (
           <LogStage3
+            handleClose={handleClose}
             prevStage={prevStage}
             nextStage={nextStage}
             activeStep={activeStep}
@@ -131,6 +127,7 @@ const LogEmotionsButton = (props) => {
       case 4:
         return (
           <LogStage4
+            handleClose={handleClose}
             handleCloseAndDispatch={handleCloseAndDispatch}
             prevStage={prevStage}
             activeStep={activeStep}
@@ -158,6 +155,8 @@ const LogEmotionsButton = (props) => {
       <Dialog
         open={open}
         onClose={handleClose}
+        maxWidth="md"
+        fullScreen={fullScreen}
         TransitionComponent={Transition}
         keepMounted
         aria-labelledby="form-dialog-title"

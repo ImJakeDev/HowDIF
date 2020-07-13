@@ -2,16 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import {
   Button,
-  DialogActions,
-  DialogContent,
   DialogContentText,
-  DialogTitle,
   Grid,
   MobileStepper,
   Tooltip,
   Typography,
 } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
+import MuiDialogContent from "@material-ui/core/DialogContent";
+import MuiDialogActions from "@material-ui/core/DialogActions";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -121,6 +123,51 @@ const joy = createMuiTheme({
   },
 });
 
+const styles = (theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2),
+  },
+  closeButton: {
+    position: "absolute",
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
+  },
+});
+
+const DialogTitle = withStyles(styles)((props) => {
+  const { children, classes, onClose, ...other } = props;
+  return (
+    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+      <Typography variant="h6">{children}</Typography>
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={onClose}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </MuiDialogTitle>
+  );
+});
+
+const DialogContent = withStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2),
+    minHeight: "40vh",
+  },
+}))(MuiDialogContent);
+
+const DialogActions = withStyles((theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(1),
+  },
+}))(MuiDialogActions);
+
 const LogStage1 = (props) => {
   const classes = useStyles();
 
@@ -132,15 +179,16 @@ const LogStage1 = (props) => {
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
-      <DialogTitle id="form-dialog-title">
+      <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
         Select a Primary Emotion you are feeling.
       </DialogTitle>
-      <DialogContent>
+      <DialogContent dividers>
         <Grid container spacing={3}>
           <Grid item xs={3}>
             <ThemeProvider theme={anger}>
               <HtmlTooltip
                 arrow
+                leaveDelay={300}
                 placement="top"
                 title={
                   <React.Fragment>
@@ -169,6 +217,7 @@ const LogStage1 = (props) => {
             <ThemeProvider theme={anticipation}>
               <HtmlTooltip
                 arrow
+                leaveDelay={300}
                 placement="top"
                 title={
                   <React.Fragment>
@@ -197,6 +246,7 @@ const LogStage1 = (props) => {
             <ThemeProvider theme={joy}>
               <HtmlTooltip
                 arrow
+                leaveDelay={300}
                 placement="top"
                 title={
                   <React.Fragment>
@@ -223,6 +273,7 @@ const LogStage1 = (props) => {
             <ThemeProvider theme={trust}>
               <HtmlTooltip
                 arrow
+                leaveDelay={300}
                 placement="top"
                 title={
                   <React.Fragment>
@@ -251,6 +302,7 @@ const LogStage1 = (props) => {
             <ThemeProvider theme={fear}>
               <HtmlTooltip
                 arrow
+                leaveDelay={300}
                 placement="top"
                 title={
                   <React.Fragment>
@@ -279,6 +331,7 @@ const LogStage1 = (props) => {
             <ThemeProvider theme={surprise}>
               <HtmlTooltip
                 arrow
+                leaveDelay={300}
                 placement="top"
                 title={
                   <React.Fragment>
@@ -307,6 +360,7 @@ const LogStage1 = (props) => {
             <ThemeProvider theme={sadness}>
               <HtmlTooltip
                 arrow
+                leaveDelay={300}
                 placement="top"
                 title={
                   <React.Fragment>
@@ -335,6 +389,7 @@ const LogStage1 = (props) => {
             <ThemeProvider theme={disgust}>
               <HtmlTooltip
                 arrow
+                leaveDelay={300}
                 placement="top"
                 title={
                   <React.Fragment>

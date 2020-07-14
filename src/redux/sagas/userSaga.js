@@ -24,8 +24,18 @@ function* fetchUser() {
   }
 }
 
+// worker Saga: will be fired on "DELETE_USER" actions
+function* deleteUser() {
+  try {
+    yield axios.delete("/api/user");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('DELETE_USER', deleteUser);
 }
 
 export default userSaga;

@@ -1,24 +1,33 @@
 import React from "react";
+import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Box, Button, Container, Grid, Typography } from "@material-ui/core";
+import { Box, Button, Container, Grid, Paper, Typography } from "@material-ui/core";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
     marginTop: "2vh",
   },
-});
+  paper: {
+    maxWidth: "90vh",
+    padding: theme.spacing(2),
+    display: "flex",
+    overflow: "auto",
+    flexDirection: "column",
+  },
+}));
 
-// This is one of our simplest components
-// It doesn't have local state, so it can be a function component.
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is, so it doesn't need 'connect()'
-
-const SettingsPage = () => {
+const SettingsPage = (props) => {
   const classes = useStyles();
 
   const history = useHistory();
+
+  const deleteAccount = () => {
+    props.dispatch({ type: "DELETE_USER" });
+    props.dispatch({ type: "LOGOUT" });
+  }
 
   return (
     <>
@@ -39,17 +48,16 @@ const SettingsPage = () => {
             </Button>
           </Grid>
           <Grid item xs={8}>
-            {/* <Typography variant="body1" gutterBottom>
-              HowDIF is a tool that helps you understand yourself and helps
-              identify the emotions you are feeling. Your feelings are valid and
-              you deserve to understand them better.
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              HowDIF provides the process to dig deeper into your emotions, and
-              the data to analyze these emotions. With this app the user will
-              explore their emotions deeper and it will empower them to
-              understand their emotions.
-            </Typography> */}
+            <Paper className={classes.paper}>
+              <Box className={classes.box}>
+                <Button
+                  startIcon={<DeleteForeverIcon />}
+                  onClick={() => deleteAccount()}
+                >
+                  Delete Account
+                </Button>
+              </Box>
+            </Paper>
           </Grid>
         </Grid>
       </Container>
@@ -57,4 +65,8 @@ const SettingsPage = () => {
   );
 };
 
-export default SettingsPage;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps)(SettingsPage);

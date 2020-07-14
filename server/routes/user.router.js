@@ -40,4 +40,24 @@ router.post('/logout', (req, res) => {
   res.sendStatus(200);
 });
 
+router.delete("/", rejectUnauthenticated, (req, res) => {
+  if (req.isAuthenticated() === false) {
+    res.sendStatus(403);
+    return;
+  }
+  const user = req.user;
+  const queryText = 'DELETE FROM "user" WHERE "id" = $1;';
+  const queryValues = [user.id];
+  pool
+    .query(queryText, queryValues)
+    .then(() => {
+      console.log(user, " has been deleted");
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

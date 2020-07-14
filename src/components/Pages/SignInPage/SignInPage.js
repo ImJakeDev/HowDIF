@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -16,6 +18,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import HomePageContent from "../HomePageContent/HomePageContent";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,9 +63,30 @@ const SignInPage = (props) => {
 
   const [username, setUserName] = useState();
 
+  const [openState, setOpenState] = useState({
+    open: false,
+    vertical: "top",
+    horizontal: "center",
+  });
+
+  //https://material-ui.com/components/snackbars/#customized-snackbars
+  const { vertical, horizontal, open } = openState;
+
+  const handleClick = (newState) => {
+    setOpenState({ open: true, ...newState });
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenState(false);
+  };
+
   const handleInputChangeForUserName = (e) => {
     setUserName(e.target.value);
-  }
+  };
 
   const [password, setPassword] = useState();
 
@@ -81,12 +108,26 @@ const SignInPage = (props) => {
     } else {
       props.dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
-    history.push("/home");
+    // history.push("/home");
+  };
+
+  const renderAlert = () => {
+    if (props.errors.loginMessage) {
+      setOpenState(true);
+    }
+    return (
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          This is a success message!
+        </Alert>
+      </Snackbar>
+    );
   }
 
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
+      { renderAlert }
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
@@ -162,6 +203,10 @@ const SignInPage = (props) => {
       </Grid>
     </Grid>
   );
-}
+};
 
-export default connect()(SignInPage);
+const mapStateToProps = (state) => ({
+  errors: state.errors,
+});
+
+export default connect(mapStateToProps)(SignInPage);

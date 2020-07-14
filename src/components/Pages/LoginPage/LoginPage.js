@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
+
 class LoginPage extends Component {
   state = {
     username: '',

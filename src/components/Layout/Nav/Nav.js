@@ -2,10 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../../Utilities/LogOutButton/LogOutButton';
-import { AppBar, Toolbar } from "@material-ui/core";
+import { AppBar, Button, Toolbar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import HelpSharpIcon from "@material-ui/icons/HelpSharp";
-// import './Nav.css';
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { grey } from "@material-ui/core/colors";
+
+const greyColor = createMuiTheme({
+  palette: {
+    primary: {
+      // joy
+      main: grey[50],
+    },
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -16,7 +27,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     color: "#fafafa",
     textDecorationLine: "none",
-  }
+  },
+  menu: {
+    marginLeft: "auto",
+  },
+  link: {
+    textDecorationLine: "none",
+  },
 }));
 
 const Nav = (props) => {
@@ -30,9 +47,16 @@ const Nav = (props) => {
           <Link to="/home" className={classes.toolbarTitle}>
             HowDIF
           </Link>
-          {props.user.id && (
-              <LogOutButton />
-          )}
+          <nav className={classes.menu}>
+            <ThemeProvider theme={greyColor}>
+              <Link to="/about" className={classes.link}>
+                <Button color="primary" size="small">
+                  About
+                </Button>
+              </Link>
+            </ThemeProvider>
+          </nav>
+          {props.user.id && <LogOutButton />}
         </Toolbar>
       </AppBar>
       {/* <Link to="/home">

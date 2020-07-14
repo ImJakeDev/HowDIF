@@ -12,8 +12,8 @@ import { connect } from "react-redux";
 // Protected Components
 import ProtectedRoute from "../../Utilities/ProtectedRoute/ProtectedRoute";
 // Component Pages
-import HomePageContent from "../../Pages/HomePageContent/HomePageContent";
-// import AboutPage from "../../Pages/AboutPage/AboutPage";
+// import HomePageContent from "../../Pages/HomePageContent/HomePageContent";
+import AboutPage from "../../Pages/AboutPage/AboutPage";
 import UserPage from "../../Pages/UserPage/UserPage";
 import LoginPage from "../../Pages/LoginPage/LoginPage";
 import SignInPage from "../../Pages/SignInPage/SignInPage";
@@ -38,8 +38,8 @@ class Content extends Component {
           <Redirect exact from="/" to="/home" />
           {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
-          {/* <Route exact path="/about" component={AboutPage} /> */}
-          <Route exact path="/landing" component={HomePageContent} />
+          <Route exact path="/about" component={AboutPage} />
+          {/* <Route exact path="/landing" component={HomePageContent} /> */}
           <Route exact path="/signin" component={SignInPage} />
           <Route exact path="/signup" component={SignUpPage} />
           {/* <Route exact path="/login" component={LoginPage} />

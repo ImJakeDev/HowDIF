@@ -20,7 +20,7 @@ const greyColor = createMuiTheme({
 const useStyles = makeStyles(() => ({
   // this group of buttons will be aligned to the right side
   toolbarButtons: {
-    marginLeft: "auto",
+    marginLeft: "1vh",
   },
 }));
 

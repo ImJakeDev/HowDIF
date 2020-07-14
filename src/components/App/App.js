@@ -35,7 +35,7 @@ const mainTheme = createMuiTheme({
       main: teal[400],
     },
     secondary: {
-      main: pink[200],
+      main: pink[100],
     },
     error: {
       main: deepOrange[400],

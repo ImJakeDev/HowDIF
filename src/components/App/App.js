@@ -32,23 +32,23 @@ import {
 const mainTheme = createMuiTheme({
   palette: {
     primary: {
-      main: teal[300],
+      main: teal[400],
     },
     secondary: {
-      main: grey[300],
+      main: pink[200],
     },
-    // error: {
-    //   main: blue[500],
-    // },
-    // warning: {
-    //   main: pink[500],
-    // },
-    // info: {
-    //   main: lightBlue[500],
-    // },
-    // success: {
-    //   main: orange[500],
-    // },
+    error: {
+      main: deepOrange[400],
+    },
+    warning: {
+      main: orange[300],
+    },
+    info: {
+      main: grey[200],
+    },
+    success: {
+      main: lightGreen[300],
+    },
   },
 });
 

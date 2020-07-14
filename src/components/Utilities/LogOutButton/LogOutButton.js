@@ -4,20 +4,18 @@ import { Button } from "@material-ui/core";
 import {
   makeStyles,
 } from "@material-ui/core/styles";
-// import { ThemeProvider } from "@material-ui/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import { createMuiTheme } from "@material-ui/core/styles";
+import {grey} from '@material-ui/core/colors';
 
-// import {grey} from '@material-ui/core/colors';
-
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: {
-//       main: grey[50],
-//     },
-//     secondary: {
-//       main: "#00bcd4",
-//     },
-//   },
-// });
+const greyColor = createMuiTheme({
+  palette: {
+    primary: {
+      // joy
+      main: grey[50],
+    },
+  },
+});
 
 const useStyles = makeStyles(() => ({
   // this group of buttons will be aligned to the right side
@@ -29,17 +27,17 @@ const useStyles = makeStyles(() => ({
 const LogOutButton = (props) => {
   const classes = useStyles();
   return (
-    // <ThemeProvider theme={theme}>
-    <Button
-      size="medium"
-      variant="outlined"
-      color="secondary"
-      className={classes.toolbarButtons}
-      onClick={() => props.dispatch({ type: "LOGOUT" })}
-    >
-      Log Out
-    </Button>
-    // </ThemeProvider>
+    <ThemeProvider theme={greyColor}>
+      <Button
+        size="medium"
+        variant="outlined"
+        color="primary"
+        className={classes.toolbarButtons}
+        onClick={() => props.dispatch({ type: "LOGOUT" })}
+      >
+        Log Out
+      </Button>
+    </ThemeProvider>
   );
 };
 

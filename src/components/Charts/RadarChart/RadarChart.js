@@ -4,7 +4,6 @@ import { ResponsiveRadar } from "@nivo/radar";
 import { useHistory } from "react-router-dom";
 import { Box, Button, Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-// import "./RadarChart.css";
 
 const useStyles = makeStyles({
   root: {

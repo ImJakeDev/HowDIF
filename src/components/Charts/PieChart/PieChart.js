@@ -4,7 +4,6 @@ import { ResponsivePie } from "@nivo/pie";
 import { useHistory } from "react-router-dom";
 import { Box, Button, Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-// import "./PieChart.css";
 
 const useStyles = makeStyles({
   root: {

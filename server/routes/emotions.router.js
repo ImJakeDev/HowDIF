@@ -188,4 +188,47 @@ router.get("/calendar", rejectUnauthenticated, (req, res) => {
     });
 });
 
+// ----- GET route to /api/emotions/table -----
+router.get("/table", rejectUnauthenticated, (req, res) => {
+  if (req.isAuthenticated() === false) {
+    res.sendStatus(403);
+    return;
+  }
+  const user = req.user; // user authenticated
+  console.log(user); // logs user
+  // What do I need?
+  /*
+  {
+      date: "YYYY-MM-DD",
+      primaryEmotion: "emotion",
+      intensityEmotion: "emotion",
+      intensityLevel: number,
+      howFeel: "text string",
+      whyFeel: "text string",
+    }
+  */
+  const queryText = `
+    SELECT "date" AS date, "primary_emotion" AS primaryEmotion, "intensity_emotion" AS intensityEmotion, "intensity_level" AS intensityLevel, "how_feel" AS howFeel, "why_feel" AS whyFeel
+    FROM "emotion_logged"
+    WHERE "user_id" = $1
+    ORDER BY "date";
+  `;
+  const queryValues = [user.id];
+  pool
+    .query(queryText, queryValues)
+    .then((result) => {
+      result.rows.map((item) => {
+        if (moment(item.day) !== moment(item.day).format("YYYY-MM-DD")) {
+          item.day = moment(item.day).format("YYYY-MM-DD");
+        }
+      });
+      console.log(result.rows);
+      res.status(200).send(result.rows);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

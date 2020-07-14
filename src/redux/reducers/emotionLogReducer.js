@@ -27,8 +27,18 @@ const emotionsToDate = (state = [], action) => {
   }
 };
 
+const emotionsTable = (state = [], action) => {
+  switch (action.type) {
+    case "SET_EMOTIONS_TABLE":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   emotionPie,
   emotionalRadar,
   emotionsToDate,
+  emotionsTable,
 });

@@ -76,6 +76,7 @@ const UserPage = (props) => {
     dispatch({ type: "FETCH_PIE_DATA" });
     dispatch({ type: "FETCH_RADAR_DATA" });
     dispatch({ type: "FETCH_CALENDAR_DATA" });
+    dispatch({ type: "FETCH_TABLE_DATA" });
   }, [dispatch]);
 
   return (

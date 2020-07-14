@@ -27,6 +27,7 @@ const SettingsPage = (props) => {
   const deleteAccount = () => {
     props.dispatch({ type: "DELETE_USER" });
     props.dispatch({ type: "LOGOUT" });
+    history.push("/home");
   }
 
   return (

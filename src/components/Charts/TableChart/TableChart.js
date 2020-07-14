@@ -140,6 +140,7 @@ const RadarChart = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    emotionsTable: state.emotionLog.emotionsTable,
   };
 };
 

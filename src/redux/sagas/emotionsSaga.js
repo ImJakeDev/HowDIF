@@ -42,7 +42,7 @@ function* fetchCalendarData() {
 }
 
 // worker Saga: will be fired on "FETCH_TABLE_DATA" actions
-function* fetchCalendarData() {
+function* fetchTableData() {
   try {
     const response = yield axios.get("/api/emotions/table");
     yield put({ type: "SET_EMOTIONS_TABLE", payload: response.data });

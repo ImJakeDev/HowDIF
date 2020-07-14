@@ -218,8 +218,8 @@ router.get("/table", rejectUnauthenticated, (req, res) => {
     .query(queryText, queryValues)
     .then((result) => {
       result.rows.map((item) => {
-        if (moment(item.day) !== moment(item.day).format("YYYY-MM-DD")) {
-          item.day = moment(item.day).format("YYYY-MM-DD");
+        if (moment(item.date) !== moment(item.date).format("YYYY-MM-DD")) {
+          item.date = moment(item.date).format("YYYY-MM-DD");
         }
       });
       console.log(result.rows);

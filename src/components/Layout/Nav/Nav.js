@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../../Utilities/LogOutButton/LogOutButton';
 import { AppBar, Button, Toolbar } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
+import SettingsIcon from "@material-ui/icons/Settings";
 import { makeStyles } from "@material-ui/core/styles";
 import HelpSharpIcon from "@material-ui/icons/HelpSharp";
 import { ThemeProvider } from "@material-ui/styles";
@@ -34,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecorationLine: "none",
   },
+  settings: {
+    marginLeft: "1vh",
+  },
 }));
 
 const Nav = (props) => {
@@ -56,7 +61,18 @@ const Nav = (props) => {
               </Link>
             </ThemeProvider>
           </nav>
-          {props.user.id && <LogOutButton />}
+          {props.user.id && (
+            <>
+              <LogOutButton />{" "}
+              <ThemeProvider theme={greyColor}>
+                <Link to="/settings" className={classes.settings}>
+                  <IconButton aria-label="settings" color="primary">
+                    <SettingsIcon />
+                  </IconButton>
+                </Link>
+              </ThemeProvider>
+            </>
+          )}
         </Toolbar>
       </AppBar>
       {/* <Link to="/home">

@@ -14,6 +14,7 @@ import ProtectedRoute from "../../Utilities/ProtectedRoute/ProtectedRoute";
 // Component Pages
 // import HomePageContent from "../../Pages/HomePageContent/HomePageContent";
 import AboutPage from "../../Pages/AboutPage/AboutPage";
+import SettingsPage from "../../Pages/SettingsPage/SettingsPage";
 import UserPage from "../../Pages/UserPage/UserPage";
 import LoginPage from "../../Pages/LoginPage/LoginPage";
 import SignInPage from "../../Pages/SignInPage/SignInPage";
@@ -55,6 +56,7 @@ class Content extends Component {
           <ProtectedRoute exact path="/pie" component={PieChart} />
           <ProtectedRoute exact path="/radar" component={RadarChart} />
           <ProtectedRoute exact path="/calendar" component={CalendarChart} />
+          <ProtectedRoute exact path="/settings" component={SettingsPage} />
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />
         </Switch>

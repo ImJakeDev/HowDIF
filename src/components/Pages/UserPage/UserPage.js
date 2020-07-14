@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import DonutLargeIcon from "@material-ui/icons/DonutLarge";
 import TrackChangesIcon from "@material-ui/icons/TrackChanges";
 import DateRangeIcon from "@material-ui/icons/DateRange";
+import TableChartIcon from "@material-ui/icons/TableChart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -136,6 +137,19 @@ const UserPage = (props) => {
                         />
                         <Link to="/calendar" className={classes.button}>
                           <Button>Emotions to Date</Button>
+                        </Link>
+                      </Box>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Paper className={classes.paper}>
+                      <Box className={classes.box}>
+                        <TableChartIcon
+                          fontSize="large"
+                          className={classes.icon}
+                        />
+                        <Link to="/table" className={classes.button}>
+                          <Button>Emotions Table</Button>
                         </Link>
                       </Box>
                     </Paper>

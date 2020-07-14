@@ -24,6 +24,7 @@ import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
 import PieChart from "../../Charts/PieChart/PieChart";
 import RadarChart from "../../Charts/RadarChart/RadarChart";
 import CalendarChart from "../../Charts/CalendarChart/CalendarChart";
+import TableChart from "../../Charts/TableChart/TableChart";
 
 
 class Content extends Component {
@@ -56,6 +57,7 @@ class Content extends Component {
           <ProtectedRoute exact path="/pie" component={PieChart} />
           <ProtectedRoute exact path="/radar" component={RadarChart} />
           <ProtectedRoute exact path="/calendar" component={CalendarChart} />
+          <ProtectedRoute exact path="/table" component={TableChart} />
           <ProtectedRoute exact path="/settings" component={SettingsPage} />
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />

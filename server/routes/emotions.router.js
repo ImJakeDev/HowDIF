@@ -208,7 +208,7 @@ router.get("/table", rejectUnauthenticated, (req, res) => {
     }
   */
   const queryText = `
-    SELECT "date" AS date, "primary_emotion" AS primaryEmotion, "intensity_emotion" AS intensityEmotion, "intensity_level" AS intensityLevel, "how_feel" AS howFeel, "why_feel" AS whyFeel
+    SELECT "date" AS date, "primary_emotion" AS "primaryEmotion", "intensity_emotion" AS "intensityEmotion", "intensity_level" AS "intensityLevel", "how_feel" AS "howFeel", "why_feel" AS "whyFeel"
     FROM "emotion_logged"
     WHERE "user_id" = $1
     ORDER BY "date";

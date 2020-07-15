@@ -5,7 +5,7 @@
 HowDIF or How Do I Feel is a react app. It solves the problem for a user of not being able to log one's emotions over time and not understanding their emotional state.
 HowDIF is a tool that helps you understand yourself and helps identify the emotions you are feeling.
 It is based off of [Plutchik’s Wheel of Emotions](https://en.wikipedia.org/wiki/Robert_Plutchik).
-You can see and test a live version of it [here](guarded-beyond-56787).
+You can see and test a live version of it [here](https://guarded-beyond-56787.herokuapp.com/#/home).
 
 ## Installation
 

@@ -103,58 +103,70 @@ const UserPage = (props) => {
             <div className={classes.appBarSpacer}>
               <Container maxWidth="sm" className={classes.container}>
                 <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                      <Box className={classes.box}>
-                        <DonutLargeIcon
-                          fontSize="large"
-                          className={classes.icon}
-                        />
-                        <Link to="/pie" className={classes.button}>
-                          <Button>Emotion Pie</Button>
-                        </Link>
-                      </Box>
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                      <Box className={classes.box}>
-                        <TrackChangesIcon
-                          fontSize="large"
-                          className={classes.icon}
-                        />
-                        <Link to="/radar" className={classes.button}>
-                          <Button>Emotional Radar</Button>
-                        </Link>
-                      </Box>
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                      <Box className={classes.box}>
-                        <DateRangeIcon
-                          fontSize="large"
-                          className={classes.icon}
-                        />
-                        <Link to="/calendar" className={classes.button}>
-                          <Button>Emotions to Date</Button>
-                        </Link>
-                      </Box>
-                    </Paper>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                      <Box className={classes.box}>
-                        <TableChartIcon
-                          fontSize="large"
-                          className={classes.icon}
-                        />
-                        <Link to="/table" className={classes.button}>
-                          <Button>Emotions Table</Button>
-                        </Link>
-                      </Box>
-                    </Paper>
-                  </Grid>
+                  {/* Emotion Pie */}
+                  {props.emotionPie[0] && (
+                    <Grid item xs={12}>
+                      <Paper className={classes.paper}>
+                        <Box className={classes.box}>
+                          <DonutLargeIcon
+                            fontSize="large"
+                            className={classes.icon}
+                          />
+                          <Link to="/pie" className={classes.button}>
+                            <Button>Emotion Pie</Button>
+                          </Link>
+                        </Box>
+                      </Paper>
+                    </Grid>
+                  )}
+                  {/* Emotional Radar */}
+                  {props.emotionalRadar[0] && (
+                    <Grid item xs={12}>
+                      <Paper className={classes.paper}>
+                        <Box className={classes.box}>
+                          <TrackChangesIcon
+                            fontSize="large"
+                            className={classes.icon}
+                          />
+                          <Link to="/radar" className={classes.button}>
+                            <Button>Emotional Radar</Button>
+                          </Link>
+                        </Box>
+                      </Paper>
+                    </Grid>
+                  )}
+                  {/* Emotions To Date */}
+                  {props.emotionsToDate[0] && (
+                    <Grid item xs={12}>
+                      <Paper className={classes.paper}>
+                        <Box className={classes.box}>
+                          <DateRangeIcon
+                            fontSize="large"
+                            className={classes.icon}
+                          />
+                          <Link to="/calendar" className={classes.button}>
+                            <Button>Emotions to Date</Button>
+                          </Link>
+                        </Box>
+                      </Paper>
+                    </Grid>
+                  )}
+                  {/* Emotions Table */}
+                  {props.emotionsTable[0] && (
+                    <Grid item xs={12}>
+                      <Paper className={classes.paper}>
+                        <Box className={classes.box}>
+                          <TableChartIcon
+                            fontSize="large"
+                            className={classes.icon}
+                          />
+                          <Link to="/table" className={classes.button}>
+                            <Button>Emotions Table</Button>
+                          </Link>
+                        </Box>
+                      </Paper>
+                    </Grid>
+                  )}
                 </Grid>
               </Container>
             </div>
@@ -170,6 +182,10 @@ const UserPage = (props) => {
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
+  emotionsToDate: state.emotionLog.emotionsToDate,
+  emotionPie: state.emotionLog.emotionPie,
+  emotionalRadar: state.emotionLog.emotionalRadar,
+  emotionsTable: state.emotionLog.emotionsTable,
 });
 
 // this allows us to use <App /> in index.js

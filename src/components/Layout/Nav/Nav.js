@@ -1,15 +1,26 @@
+// React
 import React from 'react';
-import { Link } from 'react-router-dom';
+// React Router DOM imports
+import { Link } from "react-router-dom";
+// React Redux imports
 import { connect } from 'react-redux';
+// Component imports
 import LogOutButton from '../../Utilities/LogOutButton/LogOutButton';
-import { AppBar, Button, Toolbar } from "@material-ui/core";
+//Material-ui core imports:
+import AppBar from "@material-ui/core/AppBar";
+import Button from "@material-ui/core/Button";
+import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
+//Material-ui core/styles imports:
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+//Material-ui icons imports:
 import SettingsIcon from "@material-ui/icons/Settings";
-import { makeStyles } from "@material-ui/core/styles";
 import HelpSharpIcon from "@material-ui/icons/HelpSharp";
-import { ThemeProvider } from "@material-ui/styles";
-import { createMuiTheme } from "@material-ui/core/styles";
-import { grey } from "@material-ui/core/colors";
+//Material-ui style imports:
+import ThemeProvider from "@material-ui/styles/ThemeProvider";
+//Material-ui core/colors imports:
+import grey from "@material-ui/core/colors/grey";
 
 const greyColor = createMuiTheme({
   palette: {

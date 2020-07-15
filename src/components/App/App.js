@@ -8,47 +8,34 @@ import Content from "../Layout/Content/Content";
 
 // https://material-ui.com/customization/color/#color
 import {
-  red,
-  pink,
-  purple,
-  deepPurple,
-  indigo,
-  blue,
-  lightBlue,
-  cyan,
-  teal,
-  green,
   lightGreen,
-  lime,
-  yellow,
-  amber,
-  orange,
-  deepOrange,
-  brown,
-  grey,
   blueGrey,
 } from "@material-ui/core/colors";
 
 const mainTheme = createMuiTheme({
   palette: {
     primary: {
-      main: teal[400],
+      main: blueGrey[500],
+      dark: blueGrey[700],
+      light: blueGrey[100],
     },
     secondary: {
-      main: pink[100],
+      main: lightGreen[700],
+      ark: lightGreen[900],
+      light: lightGreen[300],
     },
-    error: {
-      main: deepOrange[400],
-    },
-    warning: {
-      main: orange[300],
-    },
-    info: {
-      main: grey[200],
-    },
-    success: {
-      main: lightGreen[300],
-    },
+    // error: {
+    //   main: deepOrange[400],
+    // },
+    // warning: {
+    //   main: orange[300],
+    // },
+    // info: {
+    //   main: grey[200],
+    // },
+    // success: {
+    //   main: lightGreen[300],
+    // },
   },
 });
 

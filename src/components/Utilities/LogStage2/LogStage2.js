@@ -206,7 +206,7 @@ const LogStage2 = (props) => {
     setNumValue(numValue);
     props.setIntensityLevel(numValue);
     intensityEmotionOptions(numValue);
-  }, [setEmotion, setNumValue, intensityEmotionOptions]);
+  }, [setEmotion, setNumValue, intensityEmotionOptions, numValue, props]);
 
   return (
     <div>

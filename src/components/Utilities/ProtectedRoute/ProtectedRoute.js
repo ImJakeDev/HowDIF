@@ -1,8 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
-import LoginPage from "../../Pages/LoginPage/LoginPage";
-import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
 import SignInPage from "../../Pages/SignInPage/SignInPage";
 import SignUpPage from "../../Pages/SignUpPage/SignUpPage";
 

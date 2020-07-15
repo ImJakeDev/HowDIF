@@ -19,6 +19,7 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 import CssBaseline from "@material-ui/core/CssBaseline";
+// import EditIcon from "@material-ui/icons/Edit";
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -163,6 +164,10 @@ const TableChart = (props) => {
     setPage(0);
   };
 
+  // const handleEdit = (id) => {
+  //   console.log(id);
+  // }
+
   return (
     <>
       <CssBaseline />
@@ -204,6 +209,7 @@ const TableChart = (props) => {
                       <StyledTableCell align="right">
                         Why did I feel
                       </StyledTableCell>
+                      {/* <StyledTableCell align="right">Edit</StyledTableCell> */}
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -233,6 +239,15 @@ const TableChart = (props) => {
                         <StyledTableCell align="right">
                           {row.whyFeel}
                         </StyledTableCell>
+                        {/* <StyledTableCell align="right">
+                          <IconButton
+                            aria-label="edit"
+                            color="secondary"
+                            onClick={() => handleEdit(row.id)}
+                          >
+                            <EditIcon />
+                          </IconButton>
+                        </StyledTableCell> */}
                       </StyledTableRow>
                     ))}
                     {emptyRows > 0 && (

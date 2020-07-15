@@ -16,10 +16,8 @@ import ProtectedRoute from "../../Utilities/ProtectedRoute/ProtectedRoute";
 import AboutPage from "../../Pages/AboutPage/AboutPage";
 import SettingsPage from "../../Pages/SettingsPage/SettingsPage";
 import UserPage from "../../Pages/UserPage/UserPage";
-import LoginPage from "../../Pages/LoginPage/LoginPage";
 import SignInPage from "../../Pages/SignInPage/SignInPage";
 import SignUpPage from "../../Pages/SignUpPage/SignUpPage";
-import RegisterPage from "../../Pages/RegisterPage/RegisterPage";
 
 import PieChart from "../../Charts/PieChart/PieChart";
 import RadarChart from "../../Charts/RadarChart/RadarChart";
@@ -44,8 +42,6 @@ class Content extends Component {
           {/* <Route exact path="/landing" component={HomePageContent} /> */}
           <Route exact path="/signin" component={SignInPage} />
           <Route exact path="/signup" component={SignUpPage} />
-          {/* <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/register" component={RegisterPage} /> */}
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

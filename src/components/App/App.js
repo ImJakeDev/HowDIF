@@ -1,14 +1,18 @@
 // React
 import React from "react";
+//Material-ui core imports:
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
-// Components
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+//Material-ui style imports:
+import ThemeProvider from "@material-ui/styles/ThemeProvider";
+//Material-ui core/colors imports:
+// https://material-ui.com/customization/color/#color
+import amber from "@material-ui/core/colors/amber";
+import blueGrey from "@material-ui/core/colors/blueGrey";
+// Component imports
 import Content from "../Layout/Content/Content";
 
-// https://material-ui.com/customization/color/#color
-import { amber, blueGrey } from "@material-ui/core/colors";
-
+// Main Material-ui theme for colors
 const mainTheme = createMuiTheme({
   palette: {
     primary: {
@@ -21,21 +25,10 @@ const mainTheme = createMuiTheme({
       ark: amber[900],
       light: amber[300],
     },
-    // error: {
-    //   main: deepOrange[400],
-    // },
-    // warning: {
-    //   main: orange[300],
-    // },
-    // info: {
-    //   main: grey[200],
-    // },
-    // success: {
-    //   main: lightGreen[300],
-    // },
   },
 });
 
+// App component holds all the components
 const App = () => {
   return (
     <>

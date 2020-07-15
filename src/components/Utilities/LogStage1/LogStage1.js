@@ -49,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: "nowrap",
     marginBottom: theme.spacing(1),
   },
+  buttonArea: {
+    marginTop: "6vh",
+  },
 }));
 
 const anger = createMuiTheme({
@@ -183,7 +186,7 @@ const LogStage1 = (props) => {
         Select a Primary Emotion you are feeling.
       </DialogTitle>
       <DialogContent dividers>
-        <Grid container spacing={3}>
+        <Grid container spacing={3} className={classes.buttonArea}>
           <Grid item xs={3}>
             <ThemeProvider theme={anger}>
               <HtmlTooltip
@@ -303,7 +306,7 @@ const LogStage1 = (props) => {
               <HtmlTooltip
                 arrow
                 leaveDelay={300}
-                placement="top"
+                placement="bottom"
                 title={
                   <React.Fragment>
                     <Typography color="inherit" variant="body2">
@@ -332,7 +335,7 @@ const LogStage1 = (props) => {
               <HtmlTooltip
                 arrow
                 leaveDelay={300}
-                placement="top"
+                placement="bottom"
                 title={
                   <React.Fragment>
                     <Typography color="inherit" variant="body2">
@@ -361,7 +364,7 @@ const LogStage1 = (props) => {
               <HtmlTooltip
                 arrow
                 leaveDelay={300}
-                placement="top"
+                placement="bottom"
                 title={
                   <React.Fragment>
                     <Typography color="inherit" variant="body2">
@@ -390,7 +393,7 @@ const LogStage1 = (props) => {
               <HtmlTooltip
                 arrow
                 leaveDelay={300}
-                placement="top"
+                placement="bottom"
                 title={
                   <React.Fragment>
                     <Typography color="inherit" variant="body2">

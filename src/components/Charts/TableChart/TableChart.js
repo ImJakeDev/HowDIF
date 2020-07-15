@@ -18,6 +18,7 @@ import FirstPageIcon from "@material-ui/icons/FirstPage";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -48,44 +49,44 @@ function TablePaginationActions(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <IconButton
-        onClick={handleFirstPageButtonClick}
-        disabled={page === 0}
-        aria-label="first page"
-      >
-        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
-      </IconButton>
-      <IconButton
-        onClick={handleBackButtonClick}
-        disabled={page === 0}
-        aria-label="previous page"
-      >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowRight />
-        ) : (
-          <KeyboardArrowLeft />
-        )}
-      </IconButton>
-      <IconButton
-        onClick={handleNextButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="next page"
-      >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowLeft />
-        ) : (
-          <KeyboardArrowRight />
-        )}
-      </IconButton>
-      <IconButton
-        onClick={handleLastPageButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="last page"
-      >
-        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
-      </IconButton>
-    </div>
+    <Box component="div" className={classes.root}>
+        <IconButton
+          onClick={handleFirstPageButtonClick}
+          disabled={page === 0}
+          aria-label="first page"
+        >
+          {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+        </IconButton>
+        <IconButton
+          onClick={handleBackButtonClick}
+          disabled={page === 0}
+          aria-label="previous page"
+        >
+          {theme.direction === "rtl" ? (
+            <KeyboardArrowRight />
+          ) : (
+            <KeyboardArrowLeft />
+          )}
+        </IconButton>
+        <IconButton
+          onClick={handleNextButtonClick}
+          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+          aria-label="next page"
+        >
+          {theme.direction === "rtl" ? (
+            <KeyboardArrowLeft />
+          ) : (
+            <KeyboardArrowRight />
+          )}
+        </IconButton>
+        <IconButton
+          onClick={handleLastPageButtonClick}
+          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+          aria-label="last page"
+        >
+          {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+        </IconButton>
+    </Box>
   );
 }
 
@@ -102,12 +103,12 @@ const useStyles = makeStyles({
     marginTop: "2vh",
   },
   chart: {
-    minWidth: "90vh",
+    minWidth: "50vh",
     minHeight: "70vh",
     marginBottom: "10vh",
   },
   table: {
-    minWidth: 700,
+    minWidth: "50vh",
   },
 });
 
@@ -119,6 +120,9 @@ const StyledTableCell = withStyles((theme) => ({
   body: {
     fontSize: 14,
   },
+  root: {
+    minWidth: "15vh",
+  },
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
@@ -129,7 +133,7 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const RadarChart = (props) => {
+const TableChart = (props) => {
   const classes = useStyles();
 
   const history = useHistory();
@@ -161,6 +165,7 @@ const RadarChart = (props) => {
 
   return (
     <>
+      <CssBaseline />
       <Container maxWidth="lg" className={classes.root}>
         <Grid
           container
@@ -183,7 +188,7 @@ const RadarChart = (props) => {
                 <Table className={classes.table} aria-label="customized table">
                   <TableHead>
                     <TableRow>
-                      <StyledTableCell>Date</StyledTableCell>
+                      <StyledTableCell align="right">Date</StyledTableCell>
                       <StyledTableCell align="right">
                         Primary Emotion
                       </StyledTableCell>
@@ -210,7 +215,7 @@ const RadarChart = (props) => {
                       : data
                     ).map((row) => (
                       <StyledTableRow key={row.date}>
-                        <StyledTableCell component="th" scope="row">
+                        <StyledTableCell align="right">
                           {row.date}
                         </StyledTableCell>
                         <StyledTableCell align="right">
@@ -245,7 +250,7 @@ const RadarChart = (props) => {
                           25,
                           { label: "All", value: -1 },
                         ]}
-                        colSpan={3}
+                        colSpan={6}
                         count={data.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
@@ -275,4 +280,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(RadarChart);
+export default connect(mapStateToProps)(TableChart);

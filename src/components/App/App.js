@@ -7,10 +7,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import Content from "../Layout/Content/Content";
 
 // https://material-ui.com/customization/color/#color
-import {
-  lightGreen,
-  blueGrey,
-} from "@material-ui/core/colors";
+import { amber, blueGrey } from "@material-ui/core/colors";
 
 const mainTheme = createMuiTheme({
   palette: {
@@ -20,9 +17,9 @@ const mainTheme = createMuiTheme({
       light: blueGrey[100],
     },
     secondary: {
-      main: lightGreen[700],
-      ark: lightGreen[900],
-      light: lightGreen[300],
+      main: amber[700],
+      ark: amber[900],
+      light: amber[300],
     },
     // error: {
     //   main: deepOrange[400],

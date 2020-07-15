@@ -262,7 +262,11 @@ const LogStage2 = (props) => {
             <Button
               size="small"
               onClick={props.nextStage}
-              disabled={props.activeStep === 4}
+              disabled={
+                props.intensityEmotion === null ||
+                props.intensityEmotion === "Strong" ||
+                props.intensityEmotion === "Not Strong"
+              }
             >
               Next
               {props.theme.direction === "rtl" ? (

@@ -51,12 +51,24 @@ function* fetchTableData() {
   }
 }
 
+// worker Saga: will be fired on "EDIT_EMOTION_LOG" actions
+function* editEmotionLog(action) {
+  try {
+    const emotionLog = action.payload;
+    yield axios.put("/api/emotions/log", emotionLog);
+    yield put({ type: "FETCH_TABLE_DATA" });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* emotionsSaga() {
   yield takeLatest("ADD_EMOTION_LOG", addEmotion);
   yield takeLatest("FETCH_PIE_DATA", fetchPieData);
   yield takeLatest("FETCH_RADAR_DATA", fetchRadarData);
   yield takeLatest("FETCH_CALENDAR_DATA", fetchCalendarData);
   yield takeLatest("FETCH_TABLE_DATA", fetchTableData);
+  yield takeLatest("EDIT_EMOTION_LOG", editEmotionLog);
 }
 
 export default emotionsSaga;

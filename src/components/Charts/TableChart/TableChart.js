@@ -19,7 +19,8 @@ import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import LastPageIcon from "@material-ui/icons/LastPage";
 import CssBaseline from "@material-ui/core/CssBaseline";
-// import EditIcon from "@material-ui/icons/Edit";
+
+import TableChartRowItem from "./TableChartRowItem";
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -51,42 +52,42 @@ function TablePaginationActions(props) {
 
   return (
     <Box component="div" className={classes.root}>
-        <IconButton
-          onClick={handleFirstPageButtonClick}
-          disabled={page === 0}
-          aria-label="first page"
-        >
-          {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
-        </IconButton>
-        <IconButton
-          onClick={handleBackButtonClick}
-          disabled={page === 0}
-          aria-label="previous page"
-        >
-          {theme.direction === "rtl" ? (
-            <KeyboardArrowRight />
-          ) : (
-            <KeyboardArrowLeft />
-          )}
-        </IconButton>
-        <IconButton
-          onClick={handleNextButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="next page"
-        >
-          {theme.direction === "rtl" ? (
-            <KeyboardArrowLeft />
-          ) : (
-            <KeyboardArrowRight />
-          )}
-        </IconButton>
-        <IconButton
-          onClick={handleLastPageButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="last page"
-        >
-          {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
-        </IconButton>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="first page"
+      >
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="last page"
+      >
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
     </Box>
   );
 }
@@ -126,14 +127,6 @@ const StyledTableCell = withStyles((theme) => ({
   },
 }))(TableCell);
 
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
-
 const TableChart = (props) => {
   const classes = useStyles();
 
@@ -141,32 +134,37 @@ const TableChart = (props) => {
 
   const [data, setData] = useState([]);
 
-  const { emotionsTable } = props;
+  const { emotionsTable, dispatch } = props;
+
+  // // You should always add elements inside your render scope
+  // // to the second array parameter of useEffect to prevent unexpected bugs.
+  // useEffect(() => {
+  //   setData(emotionsTable);
+  // }, [setData, emotionsTable]);
 
   // You should always add elements inside your render scope
   // to the second array parameter of useEffect to prevent unexpected bugs.
   useEffect(() => {
-    setData(emotionsTable);
-  }, [setData, emotionsTable]);
+    dispatch({ type: "FETCH_TABLE_DATA" });
+  }, [dispatch]);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+    rowsPerPage -
+    Math.min(rowsPerPage, props.emotionsTable.length - page * rowsPerPage);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    dispatch({ type: "FETCH_TABLE_DATA" });
+    // setData(emotionsTable);
   };
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
-  // const handleEdit = (id) => {
-  //   console.log(id);
-  // }
 
   return (
     <>
@@ -209,46 +207,18 @@ const TableChart = (props) => {
                       <StyledTableCell align="right">
                         Why did I feel
                       </StyledTableCell>
-                      {/* <StyledTableCell align="right">Edit</StyledTableCell> */}
+                      <StyledTableCell align="right">Edit</StyledTableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {(rowsPerPage > 0
-                      ? data.slice(
+                      ? props.emotionsTable.slice(
                           page * rowsPerPage,
                           page * rowsPerPage + rowsPerPage
                         )
-                      : data
+                      : props.emotionsTable
                     ).map((row) => (
-                      <StyledTableRow key={row.date}>
-                        <StyledTableCell align="right">
-                          {row.date}
-                        </StyledTableCell>
-                        <StyledTableCell align="right">
-                          {row.primaryEmotion}
-                        </StyledTableCell>
-                        <StyledTableCell align="right">
-                          {row.intensityEmotion}
-                        </StyledTableCell>
-                        <StyledTableCell align="right">
-                          {row.intensityLevel}
-                        </StyledTableCell>
-                        <StyledTableCell align="right">
-                          {row.howFeel}
-                        </StyledTableCell>
-                        <StyledTableCell align="right">
-                          {row.whyFeel}
-                        </StyledTableCell>
-                        {/* <StyledTableCell align="right">
-                          <IconButton
-                            aria-label="edit"
-                            color="secondary"
-                            onClick={() => handleEdit(row.id)}
-                          >
-                            <EditIcon />
-                          </IconButton>
-                        </StyledTableCell> */}
-                      </StyledTableRow>
+                      <TableChartRowItem row={row} />
                     ))}
                     {emptyRows > 0 && (
                       <TableRow style={{ height: 53 * emptyRows }}>
@@ -265,8 +235,8 @@ const TableChart = (props) => {
                           25,
                           { label: "All", value: -1 },
                         ]}
-                        colSpan={6}
-                        count={data.length}
+                        colSpan={7}
+                        count={props.emotionsTable.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         SelectProps={{

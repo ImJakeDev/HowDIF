@@ -39,6 +39,36 @@ router.post("/log", rejectUnauthenticated, (req, res) => {
     });
 });
 
+// ----- PUT route to /api/emotions/log -----
+router.put("/log", rejectUnauthenticated, (req, res) => {
+  if (req.isAuthenticated() === false) {
+    res.sendStatus(403);
+    return;
+  }
+  const log = req.body;
+  const user = req.user; // user authenticated
+  console.log(user); // logs user
+  console.log(log); // logs the log (meta...)
+  const queryText = `UPDATE "emotion_logged" SET "how_feel" = $3, "why_feel" = $4 WHERE "user_id" = $1 AND "id" = $2;`;
+  const queryValues = [
+    user.id,
+    log.id,
+    log.howFeel,
+    log.whyFeel,
+  ];
+  console.log(queryValues);
+  pool
+    .query(queryText, queryValues)
+    .then(() => {
+      console.log("You have updated those fields");
+      res.sendStatus(204);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
 // ----- GET route to /api/emotions/pie -----
 router.get("/pie", rejectUnauthenticated, (req, res) => {
   if (req.isAuthenticated() === false) {
@@ -87,7 +117,6 @@ router.get("/pie", rejectUnauthenticated, (req, res) => {
           item.color = "#98838F";
         }
       });
-      console.log(result.rows);
       res.status(200).send(result.rows);
     })
     .catch((error) => {
@@ -121,7 +150,6 @@ router.get("/radar", rejectUnauthenticated, (req, res) => {
   pool
     .query(queryText, queryValues)
     .then((result) => {
-      console.log(result.rows);
       res.status(200).send(result.rows);
     })
     .catch((error) => {
@@ -179,7 +207,6 @@ router.get("/calendar", rejectUnauthenticated, (req, res) => {
           item.value = 0;
         }
       });
-      console.log(result.rows);
       res.status(200).send(result.rows);
     })
     .catch((error) => {
@@ -195,7 +222,6 @@ router.get("/table", rejectUnauthenticated, (req, res) => {
     return;
   }
   const user = req.user; // user authenticated
-  console.log(user); // logs user
   // What do I need?
   /*
   {
@@ -223,7 +249,7 @@ router.get("/table", rejectUnauthenticated, (req, res) => {
           item.date = moment(item.date).format("YYYY-MM-DD");
         }
       });
-      console.log(result.rows);
+      console.log('Getting everything for the table');
       res.status(200).send(result.rows);
     })
     .catch((error) => {

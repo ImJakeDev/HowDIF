@@ -1,4 +1,7 @@
+// ---------- Start of Imports ----------
+// React
 import React from "react";
+// React Redux import
 import { connect } from "react-redux";
 import {
   Button,
@@ -27,33 +30,10 @@ import {
   yellow,
   orange,
 } from "@material-ui/core/colors";
+// ---------- End of Imports ----------
 
-const HtmlTooltip = withStyles((theme) => ({
-  tooltip: {
-    backgroundColor: "#f5f5f9",
-    color: "rgba(0, 0, 0, 0.87)",
-    maxWidth: 220,
-    fontSize: theme.typography.pxToRem(12),
-    border: "1px solid #dadde9",
-  },
-}))(Tooltip);
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: "grid",
-    gridTemplateColumns: "repeat(12, 1fr)",
-    gridGap: theme.spacing(3),
-  },
-  emotionButtons: {
-    padding: theme.spacing(1),
-    whiteSpace: "nowrap",
-    marginBottom: theme.spacing(1),
-  },
-  buttonArea: {
-    marginTop: "6vh",
-  },
-}));
-
+// ----- Start of Custom Material Theme colors for buttons -----
 const anger = createMuiTheme({
   palette: {
     primary: {
@@ -125,7 +105,9 @@ const joy = createMuiTheme({
     },
   },
 });
+// ----- End of Custom Material Theme colors for buttons -----
 
+// ----- Start of Material-ui custom CSS styles -----
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -138,7 +120,39 @@ const styles = (theme) => ({
     color: theme.palette.grey[500],
   },
 });
+// ----- End of Material-ui custom CSS styles -----
 
+// ----- Start of Material-ui makeStyles custom CSS styles -----
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "grid",
+    gridTemplateColumns: "repeat(12, 1fr)",
+    gridGap: theme.spacing(3),
+  },
+  emotionButtons: {
+    padding: theme.spacing(1),
+    whiteSpace: "nowrap",
+    marginBottom: theme.spacing(1),
+  },
+  buttonArea: {
+    marginTop: "6vh",
+  },
+}));
+// ----- End of Material-ui makeStyles custom CSS styles -----
+
+// ----- Start of Custom MUI component for HTML Tooltip -----
+const HtmlTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "#f5f5f9",
+    color: "rgba(0, 0, 0, 0.87)",
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: "1px solid #dadde9",
+  },
+}))(Tooltip);
+// ----- End of Custom MUI component for HTML Tooltip -----
+
+// ----- Start of Custom MUI component for Dialog Title -----
 const DialogTitle = withStyles(styles)((props) => {
   const { children, classes, onClose, ...other } = props;
   return (
@@ -156,24 +170,31 @@ const DialogTitle = withStyles(styles)((props) => {
     </MuiDialogTitle>
   );
 });
+// ----- End of Custom MUI component for Dialog Title -----
 
+// ----- Start of Custom MUI component for Dialog Content -----
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
     minHeight: "40vh",
   },
 }))(MuiDialogContent);
+// ----- End of Custom MUI component for Dialog Content -----
 
+// ----- Start of Custom MUI component for Dialog Actions -----
 const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
   },
 }))(MuiDialogActions);
+// ----- End of Custom MUI component for Dialog Actions -----
 
+// ~ * ~ ----------> This is the start of the LogStage1 component <---------- ~ * ~ \\
 const LogStage1 = (props) => {
   const classes = useStyles();
 
+  // Sets primary emotion state by clicking emotions buttons
   const handleClickForPrimEmo = (param) => {
     props.setPrimaryEmotion(param);
     console.log(param);
@@ -182,11 +203,18 @@ const LogStage1 = (props) => {
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
+      {/* -------------------------------------------------- */}
+      {/* Start of Tile Area */}
       <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
         Select a Primary Emotion you are feeling.
       </DialogTitle>
+      {/* End of Tile Area */}
+      {/* -------------------------------------------------- */}
+      {/* Start of Content Area */}
       <DialogContent dividers>
         <Grid container spacing={3} className={classes.buttonArea}>
+          {/* -------------------------------------------------- */}
+          {/* Start of Anger Button */}
           <Grid item xs={3}>
             <ThemeProvider theme={anger}>
               <HtmlTooltip
@@ -216,6 +244,9 @@ const LogStage1 = (props) => {
               </HtmlTooltip>
             </ThemeProvider>
           </Grid>
+          {/* End of Anger Button */}
+          {/* -------------------------------------------------- */}
+          {/* Start of Anticipation Button */}
           <Grid item xs={3}>
             <ThemeProvider theme={anticipation}>
               <HtmlTooltip
@@ -245,6 +276,9 @@ const LogStage1 = (props) => {
               </HtmlTooltip>
             </ThemeProvider>
           </Grid>
+          {/* End of Anticipation Button */}
+          {/* -------------------------------------------------- */}
+          {/* Start of Joy Button */}
           <Grid item xs={3}>
             <ThemeProvider theme={joy}>
               <HtmlTooltip
@@ -272,6 +306,9 @@ const LogStage1 = (props) => {
               </HtmlTooltip>
             </ThemeProvider>
           </Grid>
+          {/* End of Joy Button */}
+          {/* -------------------------------------------------- */}
+          {/* Start of Trust Button */}
           <Grid item xs={3}>
             <ThemeProvider theme={trust}>
               <HtmlTooltip
@@ -301,6 +338,9 @@ const LogStage1 = (props) => {
               </HtmlTooltip>
             </ThemeProvider>
           </Grid>
+          {/* End of Trust Button */}
+          {/* -------------------------------------------------- */}
+          {/* Start of Fear Button */}
           <Grid item xs={3}>
             <ThemeProvider theme={fear}>
               <HtmlTooltip
@@ -330,6 +370,9 @@ const LogStage1 = (props) => {
               </HtmlTooltip>
             </ThemeProvider>
           </Grid>
+          {/* End of Fear Button */}
+          {/* -------------------------------------------------- */}
+          {/* Start of Surprise Button */}
           <Grid item xs={3}>
             <ThemeProvider theme={surprise}>
               <HtmlTooltip
@@ -359,6 +402,9 @@ const LogStage1 = (props) => {
               </HtmlTooltip>
             </ThemeProvider>
           </Grid>
+          {/* End of Surprise Button */}
+          {/* -------------------------------------------------- */}
+          {/* Start of Sadness Button */}
           <Grid item xs={3}>
             <ThemeProvider theme={sadness}>
               <HtmlTooltip
@@ -388,6 +434,9 @@ const LogStage1 = (props) => {
               </HtmlTooltip>
             </ThemeProvider>
           </Grid>
+          {/* End of Sadness Button */}
+          {/* -------------------------------------------------- */}
+          {/* Start of Disgust Button */}
           <Grid item xs={3}>
             <ThemeProvider theme={disgust}>
               <HtmlTooltip
@@ -417,9 +466,14 @@ const LogStage1 = (props) => {
               </HtmlTooltip>
             </ThemeProvider>
           </Grid>
+          {/* End of Disgust Button */}
+          {/* -------------------------------------------------- */}
         </Grid>
         <DialogContentText>{props.primaryEmotion}</DialogContentText>
       </DialogContent>
+      {/* End of Content Area */}
+      {/* -------------------------------------------------- */}
+      {/* Start of Actions Area */}
       <DialogActions>
         <MobileStepper
           variant="progress"
@@ -453,9 +507,12 @@ const LogStage1 = (props) => {
           }
         />
       </DialogActions>
+      {/* End of Actions Area */}
+      {/* -------------------------------------------------- */}
       {/* ----- This is the end of the Dialog Area ----- */}
     </div>
   );
 };
+// ~ * ~ ----------> This is the end of the LogStage1 component <---------- ~ * ~ \\
 
 export default connect()(LogStage1);

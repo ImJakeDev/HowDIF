@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 // React Redux import
 import { connect } from "react-redux";
-//Material-ui core imports:
+// Material-ui core imports:
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import DialogContentText from "@material-ui/core/DialogContentText";

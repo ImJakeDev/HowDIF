@@ -3,33 +3,36 @@
 import React from "react";
 // React Redux import
 import { connect } from "react-redux";
-import {
-  Button,
-  DialogContentText,
-  Grid,
-  MobileStepper,
-  Tooltip,
-  Typography,
-} from "@material-ui/core";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+//Material-ui core imports:
+import Button from "@material-ui/core/Button";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import Grid from "@material-ui/core/Grid";
+import MobileStepper from "@material-ui/core/MobileStepper";
+import Tooltip from "@material-ui/core/Tooltip";
+import Typography from "@material-ui/core/Typography";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
+//Material-ui icons imports:
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import CloseIcon from "@material-ui/icons/Close";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
-import { createMuiTheme } from "@material-ui/core/styles";
-import {
-  red,
-  deepPurple,
-  blue,
-  green,
-  lightGreen,
-  lime,
-  yellow,
-  orange,
-} from "@material-ui/core/colors";
+//Material-ui core/styles imports:
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import withStyles from "@material-ui/core/styles/withStyles";
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+//Material-ui style imports:
+import ThemeProvider from "@material-ui/styles/ThemeProvider";
+//Material-ui core/colors imports:
+import red from "@material-ui/core/colors/red";
+import deepPurple from "@material-ui/core/colors/deepPurple";
+import blue from "@material-ui/core/colors/blue";
+import green from "@material-ui/core/colors/green";
+import lightGreen from "@material-ui/core/colors/lightGreen";
+import lime from "@material-ui/core/colors/lime";
+import yellow from "@material-ui/core/colors/yellow";
+import orange from "@material-ui/core/colors/orange";
 // ---------- End of Imports ----------
 
 

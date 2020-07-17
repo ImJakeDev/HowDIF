@@ -60,7 +60,7 @@ const DialogTitle = withStyles(styles)((props) => {
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
-    minHeight: "40vh",
+    minHeight: "16.5vh",
   },
 }))(MuiDialogContent);
 // ----- End of Custom MUI component for Dialog Content -----

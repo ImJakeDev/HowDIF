@@ -3,7 +3,7 @@
 import React from "react";
 // React Redux import
 import { connect } from "react-redux";
-//Material-ui core imports:
+// Material-ui core imports:
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import DialogContentText from "@material-ui/core/DialogContentText";
@@ -15,17 +15,17 @@ import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
-//Material-ui icons imports:
+// Material-ui icons imports:
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import CloseIcon from "@material-ui/icons/Close";
-//Material-ui core/styles imports:
+// Material-ui core/styles imports:
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
-//Material-ui style imports:
+// Material-ui style imports:
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
-//Material-ui core/colors imports:
+// Material-ui core/colors imports:
 import red from "@material-ui/core/colors/red";
 import deepPurple from "@material-ui/core/colors/deepPurple";
 import blue from "@material-ui/core/colors/blue";
@@ -199,6 +199,7 @@ const DialogActions = withStyles((theme) => ({
 
 // ~ * ~ ----------> This is the start of the LogStage1 component <---------- ~ * ~ \\
 const LogStage1 = (props) => {
+  
   // MUI styles variable
   const classes = useStyles();
 

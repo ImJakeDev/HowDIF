@@ -1,34 +1,30 @@
+// ---------- Start of Imports ----------
+// React imports
 import React, { useState, useEffect } from "react";
+// React Redux import
 import { connect } from "react-redux";
-import {
-  Button,
-  DialogContentText,
-  Grid,
-  MobileStepper,
-  Slider,
-  Typography,
-} from "@material-ui/core";
+//Material-ui core imports:
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import Grid from "@material-ui/core/Grid";
+import MobileStepper from "@material-ui/core/MobileStepper";
+import Typography from "@material-ui/core/Typography";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
+import Slider from "@material-ui/core/Slider";
 import IconButton from "@material-ui/core/IconButton";
+// Material-ui icons imports:
 import CloseIcon from "@material-ui/icons/Close";
-import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+// Material-ui core/styles imports:
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import withStyles from "@material-ui/core/styles/withStyles";
+// ---------- End of Imports ----------
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    minWidth: "45vh",
-    marginTop: "4vh",
-  },
-  margin: {
-    height: theme.spacing(3),
-  },
-  rightAlign: {
-    textAlign: "right",
-  },
-}));
-
+// ----- Start of Stepper marks ----- 
 const marks = [
   {
     value: -5,
@@ -75,12 +71,34 @@ const marks = [
     label: "5",
   },
 ];
+// ----- End of Stepper marks -----
 
+// ----- Start of Text Function -----
 function valueText(value) {
   const newVal = value;
   return newVal;
 }
+// ----- End of Text Function -----
 
+// ----- Start of Material-ui makeStyles custom CSS styles for items in the content area -----
+const useStyles = makeStyles((theme) => ({
+  root: {
+    minWidth: "45vh",
+    marginTop: "12vh",
+  },
+  margin: {
+    height: theme.spacing(3),
+  },
+  rightAlign: {
+    textAlign: "right",
+  },
+  localState: {
+    marginTop: "8vh",
+  },
+}));
+// ----- End of Material-ui makeStyles custom CSS styles for items in the content area -----
+
+// ----- Start of Material-ui makeStyles custom CSS styles for Title and others -----
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -93,7 +111,9 @@ const styles = (theme) => ({
     color: theme.palette.grey[500],
   },
 });
+// ----- Start of Material-ui makeStyles custom CSS styles for Title and others -----
 
+// ----- Start of Custom MUI component for Dialog Title -----
 const DialogTitle = withStyles(styles)((props) => {
   const { children, classes, onClose, ...other } = props;
   return (
@@ -111,30 +131,37 @@ const DialogTitle = withStyles(styles)((props) => {
     </MuiDialogTitle>
   );
 });
+// ----- End of Custom MUI component for Dialog Title -----
 
+// ----- Start of Custom MUI component for Dialog Content -----
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
     minHeight: "40vh",
   },
 }))(MuiDialogContent);
+// ----- End of Custom MUI component for Dialog Content -----
 
+// ----- Start of Custom MUI component for Dialog Actions -----
 const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
   },
 }))(MuiDialogActions);
+// ----- End of Custom MUI component for Dialog Actions -----
 
+// ~ * ~ ----------> This is the start of the LogStage2 component <---------- ~ * ~ \\
 const LogStage2 = (props) => {
-  // I got some bugs in here with intensityEmotion
 
+  // Local State
   const [numValue, setNumValue] = useState(0);
-
   const [emotion, setEmotion] = useState(null);
 
+  // MUI styles variable
   const classes = useStyles();
 
+  // Function to render Not Strong Emotion
   const renderNotStrongEmotion = () => {
     switch (emotion) {
       case "anger":
@@ -158,6 +185,7 @@ const LogStage2 = (props) => {
     }
   };
 
+  // Function to render Strong Emotion
   const renderStrongEmotion = () => {
     switch (emotion) {
       case "anger":
@@ -180,7 +208,8 @@ const LogStage2 = (props) => {
         return "Strong";
     }
   };
-  
+
+  // Function to handle change for Intensity Level
   const handleChangeForInLvl = (event, numValue) => {
     setEmotion(props.primaryEmotion);
     setNumValue(numValue);
@@ -189,6 +218,7 @@ const LogStage2 = (props) => {
     intensityEmotionOptions(numValue);
   };
 
+  // Function with conditionals for Intensity Emotion
   const intensityEmotionOptions = (numValue) => {
     if (numValue > 0) {
       return props.setIntensityEmotion(renderStrongEmotion());
@@ -211,46 +241,75 @@ const LogStage2 = (props) => {
   return (
     <div>
       {/* ----- This is the start of the Dialog Area ----- */}
+      {/* -------------------------------------------------- */}
+      {/* Start of Tile Area */}
       <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
         How intense are you feeling {props.primaryEmotion}?
       </DialogTitle>
+      {/* End of Tile Area */}
+      {/* -------------------------------------------------- */}
+      {/* Start of Content Area */}
       <DialogContent dividers>
-        <div className={classes.root}>
-          <Grid container spacing={2}>
-            <Grid item xs={3}>
-              <Typography
-                id="discrete-slider-custom"
-                className={classes.rightAlign}
-                gutterBottom
-              >
-                {renderNotStrongEmotion()}
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Slider
-                value={numValue}
-                onChange={handleChangeForInLvl}
-                track={false}
-                defaultValue={numValue}
-                getAriaValueText={valueText}
-                aria-labelledby="track-false-slider"
-                step={1}
-                min={-5}
-                max={5}
-                valueLabelDisplay="auto"
-                marks={marks}
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <Typography id="discrete-slider-custom" gutterBottom>
-                {renderStrongEmotion()}
-              </Typography>
-            </Grid>
+        <Grid container spacing={2} className={classes.root}>
+          {/* -------------------------------------------------- */}
+          {/* Start of Not Strong Emotion */}
+          <Grid item xs={3}>
+            <Typography
+              id="discrete-slider-custom"
+              className={classes.rightAlign}
+              gutterBottom
+            >
+              {renderNotStrongEmotion()}
+            </Typography>
           </Grid>
-        </div>
-        <DialogContentText>{props.intensityLevel}</DialogContentText>
-        <DialogContentText>{props.intensityEmotion}</DialogContentText>
+          {/* End of Not Strong Emotion */}
+          {/* -------------------------------------------------- */}
+          {/* Start of Slider */}
+          <Grid item xs={6} className={classes.sliderArea}>
+            <Slider
+              color="secondary"
+              value={numValue}
+              onChange={handleChangeForInLvl}
+              track={false}
+              defaultValue={numValue}
+              getAriaValueText={valueText}
+              aria-labelledby="track-false-slider"
+              step={1}
+              min={-5}
+              max={5}
+              valueLabelDisplay="auto"
+              marks={marks}
+            />
+          </Grid>
+          {/* End of Slider */}
+          {/* -------------------------------------------------- */}
+          {/* Start of Strong Emotion */}
+          <Grid item xs={3}>
+            <Typography id="discrete-slider-custom" gutterBottom>
+              {renderStrongEmotion()}
+            </Typography>
+          </Grid>
+          {/* End of Strong Emotion */}
+          {/* -------------------------------------------------- */}
+        </Grid>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+          className={classes.localState}
+        >
+          <DialogContentText>
+            Intensity level: {props.intensityLevel}
+          </DialogContentText>
+          <DialogContentText>
+            Intensity emotion: {props.intensityEmotion}
+          </DialogContentText>
+        </Box>
       </DialogContent>
+      {/* End of Content Area */}
+      {/* -------------------------------------------------- */}
+      {/* Start of Actions Area */}
       <DialogActions>
         <MobileStepper
           variant="progress"
@@ -292,9 +351,12 @@ const LogStage2 = (props) => {
           }
         />
       </DialogActions>
+      {/* End of Actions Area */}
+      {/* -------------------------------------------------- */}
       {/* ----- This is the end of the Dialog Area ----- */}
     </div>
   );
 };
+// ~ * ~ ----------> This is the end of the LogStage2 component <---------- ~ * ~ \\
 
 export default connect()(LogStage2);

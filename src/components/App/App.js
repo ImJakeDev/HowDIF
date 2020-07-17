@@ -22,7 +22,7 @@ const mainTheme = createMuiTheme({
     },
     secondary: {
       main: amber[700],
-      ark: amber[900],
+      dark: amber[900],
       light: amber[300],
     },
   },

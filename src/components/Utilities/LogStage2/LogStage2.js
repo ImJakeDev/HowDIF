@@ -300,10 +300,10 @@ const LogStage2 = (props) => {
           className={classes.localState}
         >
           <DialogContentText>
-            Intensity level: {props.intensityLevel}
+            Intensity Level Selected: {props.intensityLevel}
           </DialogContentText>
           <DialogContentText>
-            Intensity emotion: {props.intensityEmotion}
+            Intensity Emotion Selected: {props.intensityEmotion}
           </DialogContentText>
         </Box>
       </DialogContent>

@@ -500,7 +500,7 @@ const LogStage1 = (props) => {
           alignItems="flex-end"
           className={classes.localState}
         >
-          <DialogContentText>{props.primaryEmotion}</DialogContentText>
+          <DialogContentText>Primary Emotion Selected: {props.primaryEmotion}</DialogContentText>
         </Box>
       </DialogContent>
       {/* End of Content Area */}

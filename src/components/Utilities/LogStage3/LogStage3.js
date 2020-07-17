@@ -5,7 +5,6 @@ import React from "react";
 import { connect } from "react-redux";
 // Material-ui core imports:
 import Button from "@material-ui/core/Button";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";

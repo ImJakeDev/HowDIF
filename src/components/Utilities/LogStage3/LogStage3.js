@@ -91,7 +91,7 @@ const LogStage3 = (props) => {
       {/* -------------------------------------------------- */}
       {/* Start of Tile Area */}
       <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
-        Describe how you feel?
+        Describe how <b>{props.primaryEmotion}</b> {"&"} <b>{props.intensityEmotion}</b> makes you feel right now?
       </DialogTitle>
       {/* End of Tile Area */}
       {/* -------------------------------------------------- */}
@@ -106,13 +106,12 @@ const LogStage3 = (props) => {
           fullWidth
           onChange={(event) => handleChangeForHow(event)}
         />
-        <DialogContentText>{props.howFeel}</DialogContentText>
       </DialogContent>
       {/* End of Content Area */}
       {/* -------------------------------------------------- */}
       {/* Start of Tile Area */}
       <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
-        Describe why you are feeling {props.primaryEmotion}?
+        Describe why you are feeling <b>{props.primaryEmotion}</b> {"&"} <b>{props.intensityEmotion}</b>?
       </DialogTitle>
       {/* End of Tile Area */}
       {/* -------------------------------------------------- */}
@@ -127,7 +126,6 @@ const LogStage3 = (props) => {
           fullWidth
           onChange={(event) => handleChangeForWhy(event)}
         />
-        <DialogContentText>{props.whyFeel}</DialogContentText>
       </DialogContent>
       {/* End of Content Area */}
       {/* -------------------------------------------------- */}

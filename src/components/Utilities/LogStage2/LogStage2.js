@@ -244,7 +244,7 @@ const LogStage2 = (props) => {
       {/* -------------------------------------------------- */}
       {/* Start of Tile Area */}
       <DialogTitle id="customized-dialog-title" onClose={props.handleClose}>
-        How intense are you feeling {props.primaryEmotion}?
+        How intense are you feeling <b>{props.primaryEmotion}</b>?
       </DialogTitle>
       {/* End of Tile Area */}
       {/* -------------------------------------------------- */}

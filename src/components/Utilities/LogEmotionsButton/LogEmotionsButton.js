@@ -118,6 +118,7 @@ const LogEmotionsButton = (props) => {
             classes={classes}
             theme={theme}
             primaryEmotion={primaryEmotion}
+            intensityEmotion={intensityEmotion}
             howFeel={howFeel}
             setHowFeel={setHowFeel}
             whyFeel={whyFeel}

@@ -4,6 +4,8 @@ import { ResponsiveRadar } from "@nivo/radar";
 import { useHistory } from "react-router-dom";
 import { Box, Button, Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+//Material-ui core/colors imports:
+import amber from "@material-ui/core/colors/amber";
 
 const useStyles = makeStyles({
   root: {
@@ -72,16 +74,7 @@ const RadarChart = (props) => {
                 enableDotLabel={true}
                 dotLabel="value"
                 dotLabelYOffset={-12}
-                colors={[
-                  "#61cdbb",
-                  "#32936F",
-                  "#e8c1a0",
-                  "#f47560",
-                  "#F4E04D",
-                  "#587792",
-                  "#CBDFBD",
-                  "#A53860",
-                ]}
+                colors={[amber[700]]}
                 fillOpacity={0.25}
                 blendMode="normal"
                 animate={true}

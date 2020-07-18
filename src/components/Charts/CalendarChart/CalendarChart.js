@@ -4,6 +4,15 @@ import { ResponsiveCalendar } from "@nivo/calendar";
 import { useHistory } from "react-router-dom";
 import { Box, Button, Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+// Material-ui core/colors imports:
+import blue from "@material-ui/core/colors/blue";
+import deepPurple from "@material-ui/core/colors/deepPurple";
+import green from "@material-ui/core/colors/green";
+import lightGreen from "@material-ui/core/colors/lightGreen";
+import lime from "@material-ui/core/colors/lime";
+import orange from "@material-ui/core/colors/orange";
+import red from "@material-ui/core/colors/red";
+import yellow from "@material-ui/core/colors/yellow";
 
 const useStyles = makeStyles({
   root: {
@@ -74,14 +83,14 @@ const CalendarChart = (props) => {
                 to={endDate()}
                 emptyColor="#eeeeee"
                 colors={[
-                  "#61cdbb",
-                  "#32936F",
-                  "#e8c1a0",
-                  "#f47560",
-                  "#F4E04D",
-                  "#587792",
-                  "#CBDFBD",
-                  "#A53860",
+                  red[500],
+                  lightGreen[500],
+                  blue[500],
+                  deepPurple[500],
+                  green[500],
+                  orange[500],
+                  lime[500],
+                  yellow[500],
                 ]}
                 minValue={0}
                 maxValue={9}

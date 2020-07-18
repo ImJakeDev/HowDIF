@@ -42,7 +42,7 @@ const anger = createMuiTheme({
   palette: {
     primary: {
       // anger
-      main: red[300],
+      main: red[500],
     },
   },
 });
@@ -51,7 +51,7 @@ const fear = createMuiTheme({
   palette: {
     primary: {
       // fear
-      main: lightGreen[300],
+      main: lightGreen[500],
     },
   },
 });
@@ -60,7 +60,7 @@ const sadness = createMuiTheme({
   palette: {
     primary: {
       // sadness
-      main: blue[300],
+      main: blue[500],
     },
   },
 });
@@ -69,7 +69,7 @@ const disgust = createMuiTheme({
   palette: {
     primary: {
       // disgust
-      main: deepPurple[300],
+      main: deepPurple[500],
     },
   },
 });
@@ -78,7 +78,7 @@ const surprise = createMuiTheme({
   palette: {
     primary: {
       // surprise
-      main: green[300],
+      main: green[500],
     },
   },
 });
@@ -87,7 +87,7 @@ const anticipation = createMuiTheme({
   palette: {
     primary: {
       // anticipation
-      main: orange[300],
+      main: orange[500],
     },
   },
 });
@@ -96,7 +96,7 @@ const trust = createMuiTheme({
   palette: {
     primary: {
       // trust
-      main: lime[300],
+      main: lime[500],
     },
   },
 });
@@ -105,7 +105,7 @@ const joy = createMuiTheme({
   palette: {
     primary: {
       // joy
-      main: yellow[300],
+      main: yellow[500],
     },
   },
 });

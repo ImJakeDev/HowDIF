@@ -4,6 +4,15 @@ import { ResponsivePie } from "@nivo/pie";
 import { useHistory } from "react-router-dom";
 import { Box, Button, Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+// Material-ui core/colors imports:
+import blue from "@material-ui/core/colors/blue";
+import deepPurple from "@material-ui/core/colors/deepPurple";
+import green from "@material-ui/core/colors/green";
+import lightGreen from "@material-ui/core/colors/lightGreen";
+import lime from "@material-ui/core/colors/lime";
+import orange from "@material-ui/core/colors/orange";
+import red from "@material-ui/core/colors/red";
+import yellow from "@material-ui/core/colors/yellow";
 
 const useStyles = makeStyles({
   root: {
@@ -59,14 +68,14 @@ const PieChart = (props) => {
                 padAngle={0.7}
                 cornerRadius={3}
                 colors={[
-                  "#E76F51",
-                  "#2A9D8F",
-                  "#96B2F3",
-                  "#FFB0F7",
-                  "#91EBF3",
-                  "#F4A261",
-                  "#98CE00",
-                  "#E9C46A",
+                  red[500],
+                  lightGreen[500],
+                  blue[500],
+                  deepPurple[500],
+                  green[500],
+                  orange[500],
+                  lime[500],
+                  yellow[500],
                 ]}
                 borderWidth={1}
                 borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}

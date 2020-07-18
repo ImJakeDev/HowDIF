@@ -98,21 +98,21 @@ router.get("/pie", rejectUnauthenticated, (req, res) => {
     .then((result) => {
       result.rows.map((item) => {
         if (item.id === "anger") {
-          item.color = "#E76F51"; // red
+          item.color = "#f44336"; // red
         } else if (item.id === "fear") {
-          item.color = "#2A9D8F"; // cooler green
+          item.color = "#8bc34a"; // cooler green
         } else if (item.id === "sadness") {
-          item.color = "#96B2F3"; // blue
+          item.color = "#2196f3"; // blue
         } else if (item.id === "disgust") {
-          item.color = "#FFB0F7"; // pink ??
+          item.color = "#673ab7"; // pink ??
         } else if (item.id === "surprise") {
-          item.color = "#91EBF3"; // light blue
+          item.color = "#4caf50"; // light blue
         } else if (item.id === "anticipation") {
-          item.color = "#F4A261"; // orange
+          item.color = "#ff9800"; // orange
         } else if (item.id === "trust") {
-          item.color = "#98CE00"; // lime green
+          item.color = "#cddc39"; // lime green
         } else if (item.id === "joy") {
-          item.color = "#E9C46A"; // yellow
+          item.color = "#ffeb3b"; // yellow
         } else {
           item.color = "#98838F";
         }

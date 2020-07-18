@@ -8,32 +8,32 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
 import MobileStepper from "@material-ui/core/MobileStepper";
+import MuiDialogActions from "@material-ui/core/DialogActions";
+import MuiDialogContent from "@material-ui/core/DialogContent";
+import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
-import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import MuiDialogContent from "@material-ui/core/DialogContent";
-import MuiDialogActions from "@material-ui/core/DialogActions";
-import IconButton from "@material-ui/core/IconButton";
 // Material-ui icons imports:
+import CloseIcon from "@material-ui/icons/Close";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import CloseIcon from "@material-ui/icons/Close";
 // Material-ui core/styles imports:
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 // Material-ui style imports:
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
 // Material-ui core/colors imports:
-import red from "@material-ui/core/colors/red";
-import deepPurple from "@material-ui/core/colors/deepPurple";
 import blue from "@material-ui/core/colors/blue";
+import deepPurple from "@material-ui/core/colors/deepPurple";
 import green from "@material-ui/core/colors/green";
 import lightGreen from "@material-ui/core/colors/lightGreen";
 import lime from "@material-ui/core/colors/lime";
-import yellow from "@material-ui/core/colors/yellow";
 import orange from "@material-ui/core/colors/orange";
+import red from "@material-ui/core/colors/red";
+import yellow from "@material-ui/core/colors/yellow";
 // ---------- End of Imports ----------
 
 

@@ -1,26 +1,38 @@
+// ----- Start of Imports -----
+// React imports
 import React, { useState } from "react";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from "@material-ui/lab/Alert";
+// React Redux import
+import { connect } from "react-redux";
+// React Router DOM import
+import { Link } from "react-router-dom";
+// Material-ui core imports:
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Paper from "@material-ui/core/Paper";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Paper from "@material-ui/core/Paper";
+import Snackbar from "@material-ui/core/Snackbar";
+import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-
+// Material-ui core/styles imports:
+import makeStyles from "@material-ui/core/styles/makeStyles";
+// Material-ui icons imports:
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+// Material-ui lab imports:
+import MuiAlert from "@material-ui/lab/Alert";
+// Component imports
 import HomePageContent from "../HomePageContent/HomePageContent";
+// ----- End of Imports -----
 
+// ----- Start of Material-ui Alert function -----
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
+// ----- End of Material-ui Alert function -----
 
+// ----- Start of custom Material-ui styles for page -----
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
@@ -36,10 +48,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
   },
   paper: {
-    margin: theme.spacing(8, 4),
+    alignItems: "center",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
+    margin: theme.spacing(8, 4),
   },
   avatar: {
     margin: theme.spacing(1),
@@ -53,46 +65,52 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+// ----- End of custom Material-ui styles for page -----
 
+// ~ * ~ ----------> This is the start of the SignInPage component <---------- ~ * ~ \\
 const SignInPage = (props) => {
+
+  // MUI styles variable
   const classes = useStyles();
 
+  // ----- Start of Local state -----
   const [username, setUserName] = useState();
-
+  const [password, setPassword] = useState();
   const [openState, setOpenState] = useState({
+    horizontal: "center",
     open: false,
     vertical: "top",
-    horizontal: "center",
   });
-
-  //https://material-ui.com/components/snackbars/#customized-snackbars
+  // https://material-ui.com/components/snackbars/#customized-snackbars
   const { vertical, horizontal, open } = openState;
+  // ----- End of Local state -----
 
+  // Function to handle click that changes state and will render alert
   const handleClick = (newState) => {
     setOpenState({ open: true, ...newState });
   };
 
+  // Function handles the click away that changes state and will not render alert
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpenState(false);
   };
 
+  // Function handles the change for User Name
   const handleInputChangeForUserName = (e) => {
     setUserName(e.target.value);
   };
 
-  const [password, setPassword] = useState();
-
+  // Function handles the change for Password
   const handleInputChangeForPassword = (e) => {
     setPassword(e.target.value);
   };
 
+  // Function is the login event handler
   const login = (event) => {
     event.preventDefault();
-
     if (username && password) {
       props.dispatch({
         type: "LOGIN",
@@ -107,17 +125,18 @@ const SignInPage = (props) => {
     // history.push("/home");
   };
 
+  // Function renders Alert depending on conditions
   const renderAlert = () => {
     if (props.errors.loginMessage) {
       setOpenState(true);
+      return (
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+            This is a success message!
+          </Alert>
+        </Snackbar>
+      );
     }
-    return (
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
-          This is a success message!
-        </Alert>
-      </Snackbar>
-    );
   }
 
   return (
@@ -200,9 +219,12 @@ const SignInPage = (props) => {
     </Grid>
   );
 };
+// ~ * ~ ----------> This is the end of the SignInPage component <---------- ~ * ~ \\
 
+// ----- Start of Redux Store mapStateToProps function -----
 const mapStateToProps = (state) => ({
   errors: state.errors,
 });
+// ----- End of Redux Store mapStateToProps function -----
 
 export default connect(mapStateToProps)(SignInPage);

@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 // React Router DOM import
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 // Material-ui core imports:
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -69,9 +70,12 @@ const useStyles = makeStyles((theme) => ({
 
 // ~ * ~ ----------> This is the start of the SignInPage component <---------- ~ * ~ \\
 const SignInPage = (props) => {
-
+  
   // MUI styles variable
   const classes = useStyles();
+
+  // History hook
+  const history = useHistory();
 
   // ----- Start of Local state -----
   const [username, setUserName] = useState();
@@ -81,8 +85,7 @@ const SignInPage = (props) => {
     open: false,
     vertical: "top",
   });
-  // https://material-ui.com/components/snackbars/#customized-snackbars
-  const { vertical, horizontal, open } = openState;
+  const { open } = openState;
   // ----- End of Local state -----
 
   // Function to handle click that changes state and will render alert
@@ -91,11 +94,11 @@ const SignInPage = (props) => {
   };
 
   // Function handles the click away that changes state and will not render alert
-  const handleClose = (event, reason) => {
+  const handleClose = (reason) => {
     if (reason === "clickaway") {
       return;
     }
-    setOpenState(false);
+    setOpenState({ ...openState, open: false });
   };
 
   // Function handles the change for User Name
@@ -121,28 +124,25 @@ const SignInPage = (props) => {
       });
     } else {
       props.dispatch({ type: "LOGIN_INPUT_ERROR" });
+      handleClick();
     }
-    // history.push("/home");
+    history.push("/home");
   };
-
-  // Function renders Alert depending on conditions
-  const renderAlert = () => {
-    if (props.errors.loginMessage) {
-      setOpenState(true);
-      return (
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success">
-            This is a success message!
-          </Alert>
-        </Snackbar>
-      );
-    }
-  }
 
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      { renderAlert }
+      {props.errors.loginMessage && (
+        <Snackbar
+          autoHideDuration={5000}
+          onClose={handleClose}
+          open={open}
+        >
+          <Alert onClose={handleClose} severity="error">
+            {props.errors.loginMessage}
+          </Alert>
+        </Snackbar>
+      )}
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>

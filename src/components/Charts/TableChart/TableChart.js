@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -132,9 +132,7 @@ const TableChart = (props) => {
 
   const history = useHistory();
 
-  const [data, setData] = useState([]);
-
-  const { emotionsTable, dispatch } = props;
+  const { dispatch } = props;
 
   // // You should always add elements inside your render scope
   // // to the second array parameter of useEffect to prevent unexpected bugs.

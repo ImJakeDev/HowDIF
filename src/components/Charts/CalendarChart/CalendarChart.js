@@ -175,18 +175,18 @@ const CalendarChart = (props) => {
                 monthLegendPosition="after"
                 dayBorderWidth={2}
                 dayBorderColor="#ffffff"
-                legends={[
-                  {
-                    anchor: "bottom-right",
-                    direction: "row",
-                    translateY: 36,
-                    itemCount: 6,
-                    itemWidth: 42,
-                    itemHeight: 36,
-                    itemsSpacing: 14,
-                    itemDirection: "right-to-left",
-                  },
-                ]}
+                // legends={[
+                //   {
+                //     anchor: "bottom-right",
+                //     direction: "row",
+                //     translateY: 36,
+                //     itemCount: 6,
+                //     itemWidth: 42,
+                //     itemHeight: 36,
+                //     itemsSpacing: 14,
+                //     itemDirection: "right-to-left",
+                //   },
+                // ]}
               />
             </Box>
           </Grid>

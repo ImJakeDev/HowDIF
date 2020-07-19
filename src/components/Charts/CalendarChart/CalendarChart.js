@@ -21,7 +21,51 @@ const useStyles = makeStyles({
   },
   chart: {
     width: "90vh",
-    height: "70vh",
+    height: "40vh",
+  },
+  anger: {
+    backgroundColor: red[500],
+    color: "white",
+    padding: "1vh",
+    margin: "1vh",
+  },
+  fear: {
+    backgroundColor: lightGreen[500],
+    padding: "1vh",
+    margin: "1vh",
+  },
+  sadness: {
+    backgroundColor: blue[500],
+    color: "white",
+    padding: "1vh",
+    margin: "1vh",
+  },
+  disgust: {
+    backgroundColor: deepPurple[500],
+    color: "white",
+    padding: "1vh",
+    margin: "1vh",
+  },
+  surprise: {
+    backgroundColor: green[500],
+    color: "white",
+    padding: "1vh",
+    margin: "1vh",
+  },
+  anticipation: {
+    backgroundColor: orange[500],
+    padding: "1vh",
+    margin: "1vh",
+  },
+  trust: {
+    backgroundColor: lime[500],
+    padding: "1vh",
+    margin: "1vh",
+  },
+  joy: {
+    backgroundColor: yellow[500],
+    padding: "1vh",
+    margin: "1vh",
   },
 });
 
@@ -31,7 +75,10 @@ const CalendarChart = (props) => {
 
   const history = useHistory();
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([{
+      day: "0000-00-00",
+      value: 0,
+    }]);
 
   const { emotionsToDate } = props;
 
@@ -40,7 +87,6 @@ const CalendarChart = (props) => {
   useEffect(() => {
     setData(emotionsToDate);
   }, [setData, emotionsToDate]);
-
 
   // If data is undefined it errors out
   const startDate = () => {
@@ -74,6 +120,34 @@ const CalendarChart = (props) => {
             <Button variant="contained" onClick={() => history.push("/home")}>
               Back
             </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Box display="flex" flexDirection="row">
+              <Box className={classes.anger}>
+                <Typography variant="body2">Anger = 1</Typography>
+              </Box>
+              <Box className={classes.fear}>
+                <Typography variant="body2">Fear = 2</Typography>
+              </Box>
+              <Box className={classes.sadness}>
+                <Typography variant="body2">Sadness = 3</Typography>
+              </Box>
+              <Box className={classes.disgust}>
+                <Typography variant="body2">Disgust = 4</Typography>
+              </Box>
+              <Box className={classes.surprise}>
+                <Typography variant="body2">Surprise = 5</Typography>
+              </Box>
+              <Box className={classes.anticipation}>
+                <Typography variant="body2">Anticipation = 6</Typography>
+              </Box>
+              <Box className={classes.trust}>
+                <Typography variant="body2">Trust = 7</Typography>
+              </Box>
+              <Box className={classes.joy}>
+                <Typography variant="body2">Joy = 8</Typography>
+              </Box>
+            </Box>
           </Grid>
           <Grid item xs={12}>
             <Box component="div" className={classes.chart}>
